@@ -98,7 +98,7 @@ and distribute the project with proper attribution.
   \item Team check-in meetings will be held twice weekly via Microsoft Teams or Zoom, all team members are expected to attend
   and share their progress.
   \item An in-person meeting will be scheduled at least once per month on campus.
-  \item The industry advisor will meet with the team weekly, virtually. Including check-in and Q&A.
+  \item The industry advisor will meet with the team weekly, virtually. Including check-in and Q\&A.
   \item Each meeting will have a designated chair and note-taker, with an agenda shared in advance.
 \end{itemize}
 
@@ -174,64 +174,192 @@ The following workflow will be adopted for the project:
     \item Use GitHub Issues to track tasks, bugs, and feature requests, with appropriate labels for classification.
     \item Update any changes in the weekly check-in meetings.
 \end{enumerate}
+
 \section{Project Decomposition and Scheduling}
 
-\begin{itemize}
-  \item How will you be using GitHub projects?
-  \item Include a link to your GitHub project
-\end{itemize}
+\subsection*{Work Breakdown Structure (WBS)}
+\begin{enumerate}
+  \item \textbf{Data Acquisition} \\
+  Inputs: Public datasets or farm-captured videos/images. \\
+  Outputs: A reproducible data pipeline that yields video frames for downstream modules. \\
+  Activities: dataset discovery, data license check, frame extraction, anonymization (if needed), train/val/test split. \\
+  \emph{Definition of Done (DoD)}: A script that ingests video(s) and produces timestamped frames with a stable folder structure; README with usage.
 
-\wss{How will the project be scheduled?  This is the big picture schedule, not
-details. You will need to reproduce information that is in the course outline
-for deadlines.}
+  \item \textbf{Cow Detection (YOLO)} \\
+  Inputs: Frames from data pipeline. \\
+  Outputs: Per-frame cow bounding boxes. \\
+  Activities: load YOLOv8 pre-trained model; filter to ``cow'' class; configure inference resolution and batch size. \\
+  \emph{DoD}: On a held-out clip, detection runs at $\geq$ 15 FPS (720p, RTX 4060) with mAP@0.5 $\geq$ 0.60 for class ``cow''.
+
+  \item \textbf{Cow Tracking (Tracker)} \\
+  Inputs: Detection boxes. \\
+  Outputs: Stable track IDs across frames. \\
+  Activities: integrate ByteTrack (or DeepSORT), tune thresholds, handle short occlusions. \\
+  \emph{DoD}: On a 2--5 minute clip with $\geq 3$ cows, IDF1 $\geq 0.55$, ID switches $\leq 0.2$ per cow per minute.
+
+  \item \textbf{Individual Identification (Coat Pattern Classifier)} \\
+  Inputs: Crops from detection+tracking. \\
+  Outputs: Identity label per track (e.g., Cow A, Cow B). \\
+  Activities: collect small training set (per-cow exemplars), train a light CNN (or classical SVM) on coat patterns, add data augmentation. \\
+  \emph{DoD}: On a set of at least 5 distinct cows, Top-1 accuracy $\geq$ 80\% on validation; latency per crop $\leq$ 5 ms (batched on GPU).
+
+  \item \textbf{Pipeline Integration \& Visualization} \\
+  Chain: Frames $\rightarrow$ YOLO boxes $\rightarrow$ Tracker IDs $\rightarrow$ Crop $\rightarrow$ Classifier $\rightarrow$ Overlay (ID + Name). \\
+  \emph{DoD}: Live/recorded video renders bounding box + track ID + identity text overlay without stutter; end-to-end $\geq$ 10 FPS at 720p.
+
+  \item \textbf{Evaluation \& Tuning} \\
+  Activities: metrics (mAP, IDF1, ID switches, cls accuracy), ablations (resolution/model size), robustness tests (lighting, occlusion). \\
+  \emph{DoD}: A reproducible evaluation script + a summary report figure/table.
+
+  \item \textbf{Documentation \& Delivery} \\
+  Activities: user manual, setup guide, performance report, demo video. \\
+  \emph{DoD}: Docs reviewed and merged; demo video recorded; release tag created.
+\end{enumerate}
+
+\subsection*{Scheduling (High-level Timeline)}
+{\color{red} TBD}
+% \begin{itemize}
+%   timeline 你规划一下吧
+% \end{itemize}
+
+\subsection*{Milestones and Exit Criteria}
+{\color{red} TBD}
+% \begin{itemize}
+%   这个我不知道怎么编
+% \end{itemize}
+
+\subsection*{Project Board}
+We will manage epics and issues in GitHub Projects (link to be added): \\
+\url{https://github.com/users/InfantMob/projects/2}
+
+% \begin{itemize}
+%   \item How will you be using GitHub projects?
+%   \item Include a link to your GitHub project
+% \end{itemize}
+
+% \wss{How will the project be scheduled?  This is the big picture schedule, not
+% details. You will need to reproduce information that is in the course outline
+% for deadlines.}
 
 \section{Proof of Concept Demonstration Plan}
 
-What is the main risk, or risks, for the success of your project?  What will you
-demonstrate during your proof of concept demonstration to convince yourself that
-you will be able to overcome this risk?
+% What is the main risk, or risks, for the success of your project?  What will you
+% demonstrate during your proof of concept demonstration to convince yourself that
+% you will be able to overcome this risk?
+
+\subsection*{Primary Risks}
+
+\begin{enumerate}
+  \item \textbf{Real-time performance}: detection+tracking+classification may not sustain target FPS on typical hardware.
+  \item \textbf{ID stability under occlusion}: short occlusions or crowding can cause ID switches and track fragmentation.
+  \item \textbf{Identity recognition accuracy}: limited per-cow data may lead to poor generalization across lighting/pose.
+  \item \textbf{Integration complexity}: multi-stage pipeline may introduce I/O bottlenecks and error propagation.
+\end{enumerate}
+
+\subsection*{PoC Scope \& Demos}
+\begin{itemize}
+  \item \textbf{Demo A (Detect+Track)}: Run YOLO + ByteTrack on a 2--5 minute barn clip with 3--6 cows; show live overlay with stable IDs through brief occlusions. \\
+  \emph{Success Criteria}: $\geq$ 15 FPS detection; IDF1 $\geq$ 0.55; ID switches $\leq$ 0.2 per cow per minute.
+  \item \textbf{Demo B (Identity on Tracks)}: For $\geq$ 5 known cows with small per-cow exemplars, attach identity labels to track IDs. \\
+  \emph{Success Criteria}: Top-1 identity accuracy $\geq$ 80\% on validation clips; identity label remains consistent for a given track.
+  \item \textbf{Demo C (End-to-End)}: Single command to run the pipeline on a video file and render annotated output (bounding box + ID + name). \\
+  \emph{Success Criteria}: $\geq$ 10 FPS at 720p on RTX 4060; no pipeline stalls; video written to disk with overlays.
+\end{itemize}
+
+\subsection*{Risk Mitigations}
+\begin{itemize}
+  \item \textbf{Performance}: use YOLOv8n/s variants; GPU batching; lower inference resolution; asynchronous I/O; frame skipping if needed.
+  \item \textbf{ID Stability}: parameter tuning; enable Re-ID embeddings (DeepSORT alternative); motion smoothing; short-term track memory.
+  \item \textbf{Accuracy}: data augmentation (illumination, blur, pose); increase per-cow exemplars; hard negative mining.
+  \item \textbf{Integration}: modular interfaces (dataclasses/TypedDict for detections/tracks); unit tests per stage; profiling and caching.
+\end{itemize}
 
 \section{Expected Technology}
 
-\wss{What programming language or languages do you expect to use?  What external
-libraries?  What frameworks?  What technologies.  Are there major components of
-the implementation that you expect you will implement, despite the existence of
-libraries that provide the required functionality.  For projects with machine
-learning, will you use pre-trained models, or be training your own model?  }
+% \wss{What programming language or languages do you expect to use?  What external
+% libraries?  What frameworks?  What technologies.  Are there major components of
+% the implementation that you expect you will implement, despite the existence of
+% libraries that provide the required functionality.  For projects with machine
+% learning, will you use pre-trained models, or be training your own model?  }
 
-\wss{The implementation decisions can, and likely will, change over the course
-of the project.  The initial documentation should be written in an abstract way;
-it should be agnostic of the implementation choices, unless the implementation
-choices are project constraints.  However, recording our initial thoughts on
-implementation helps understand the challenge level and feasibility of a
-project.  It may also help with early identification of areas where project
-members will need to augment their training.}
+% \wss{The implementation decisions can, and likely will, change over the course
+% of the project.  The initial documentation should be written in an abstract way;
+% it should be agnostic of the implementation choices, unless the implementation
+% choices are project constraints.  However, recording our initial thoughts on
+% implementation helps understand the challenge level and feasibility of a
+% project.  It may also help with early identification of areas where project
+% members will need to augment their training.}
 
-Topics to discuss include the following:
+% Topics to discuss include the following:
 
+% \begin{itemize}
+% \item Specific programming language
+% \item Specific libraries
+% \item Pre-trained models
+% \item Specific linter tool (if appropriate)
+% \item Specific unit testing framework
+% \item Investigation of code coverage measuring tools
+% \item Specific plans for Continuous Integration (CI), or an explanation that CI
+%   is not being done
+% \item Specific performance measuring tools (like Valgrind), if
+%   appropriate
+% \item Tools you will likely be using?
+% \end{itemize}
+
+% \wss{git, GitHub and GitHub projects should be part of your technology.}
+\subsection*{Languages \& Frameworks}
 \begin{itemize}
-\item Specific programming language
-\item Specific libraries
-\item Pre-trained models
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Tools you will likely be using?
+  \item \textbf{Language}: Python (3.10+)
+  \item \textbf{Core DL/CV}: PyTorch, Ultralytics YOLO, OpenCV
+  \item \textbf{Tracking}: ByteTrack (primary) or DeepSORT (fallback/Re-ID)
+  \item \textbf{Classifiers}: TorchVision (e.g., ResNet18 backbone) or scikit-learn (SVM) for lightweight baselines
+  \item \textbf{Visualization}: OpenCV drawing utilities; optional Streamlit/Gradio for a simple UI
 \end{itemize}
 
-\wss{git, GitHub and GitHub projects should be part of your technology.}
+\subsection*{Models}
+\begin{itemize}
+  \item \textbf{Detector}: YOLOv8n/s pre-trained on COCO (using ``cow'' class); fine-tuning if needed.
+  \item \textbf{Tracker}: ByteTrack tuned for cow motion/occlusion patterns; DeepSORT with Re-ID as alternative.
+  \item \textbf{Identity Classifier}: small CNN (e.g., ResNet18) trained from pre-trained weights; input = tracked cow crops.
+\end{itemize}
+
+\subsection*{Quality \& Tooling}
+\begin{itemize}
+  \item \textbf{Unit tests}: \texttt{pytest} (coverage goal $\geq$ 60\% for non-DL utility code).
+  \item \textbf{Style/Lint}: \texttt{black} (line length 88), \texttt{flake8}, \texttt{isort}, type hints with \texttt{mypy}.
+  \item \textbf{CI}: GitHub Actions for lint + unit tests + packaging checks on PRs to \texttt{main}.
+  \item \textbf{Performance}: PyTorch Profiler; OpenCV timing; optional \texttt{torch.compile} if beneficial.
+  \item \textbf{Experiment tracking}: TensorBoard for metrics; optional Weights \& Biases if allowed.
+  \item \textbf{Config}: Hydra or YAML-based configs for reproducible runs.
+  \item \textbf{Data management}: simple manifest + \texttt{git-lfs} or DVC (optional) for larger assets.
+\end{itemize}
+
+\subsection*{Implementation Notes}
+\begin{itemize}
+  \item Prefer pre-trained detectors; train our own small identity model on curated coat-pattern crops.
+  \item Keep modules loosely coupled (detector $\rightarrow$ tracker $\rightarrow$ classifier) with typed data records to simplify testing and swaps.
+  \item Provide a single CLI entry point (\texttt{python -m cowputer.run --source ...}) to run end-to-end or stage-by-stage.
+\end{itemize}
 
 \section{Coding Standard}
 
-\wss{What coding standard will you adopt?}
+% \wss{What coding standard will you adopt?}
+\begin{itemize}
+  \item \textbf{Style}: PEP8; \texttt{black} (line length 88), \texttt{isort} for imports, \texttt{flake8} for lint.
+  \item \textbf{Type Hints}: Use Python type hints throughout; enforce with \texttt{mypy} in CI (allow gradual typing where needed).
+  \item \textbf{Docstrings}: Google-style docstrings with argument/return descriptions; examples for public APIs.
+  \item \textbf{Project Layout}: \texttt{src/} package structure; tests in \texttt{tests/} mirroring module paths.
+  \item \textbf{Commits}: Conventional Commits (e.g., \texttt{feat:}, \texttt{fix:}, \texttt{docs:}); small, atomic commits with meaningful messages.
+  \item \textbf{Branches}: \texttt{feature/*}, \texttt{bugfix/*}; protect \texttt{main} with required reviews + green CI.
+  \item \textbf{PRs}: At least one reviewer; PR template must include scope, test evidence (screenshots/metrics), and risk notes.
+  \item \textbf{Testing}: \texttt{pytest}; include unit tests for data loaders, I/O contracts, post-processing; golden-sample tests for tracking and overlay.
+  \item \textbf{Security/Privacy}: No farm-identifying PII in the repo; if any non-public data exists, keep out of VCS and document access procedures.
+\end{itemize}
 
 \newpage{}
 
 \section*{Appendix --- Reflection}
+{\color{red} TBD}
 
 \wss{Not required for CAS 741}
 
@@ -249,75 +377,131 @@ Topics to discuss include the following:
 \newpage{}
 
 \section*{Appendix --- Team Charter}
-
+{\color{red} TBD}
 \wss{borrows from
 \href{https://engineering.up.edu/industry_partnerships/files/team-charter.pdf}
 {University of Portland Team Charter}}
 
 \subsection*{External Goals}
 
-\wss{What are your team's external goals for this project? These are not the
-goals related to the functionality or quality fo the project.  These are the
-goals on what the team wishes to achieve with the project.  Potential goals are
-to win a prize at the Capstone EXPO, or to have something to talk about in
-interviews, or to get an A+, etc.}
+% \wss{What are your team's external goals for this project? These are not the
+% goals related to the functionality or quality fo the project.  These are the
+% goals on what the team wishes to achieve with the project.  Potential goals are
+% to win a prize at the Capstone EXPO, or to have something to talk about in
+% interviews, or to get an A+, etc.}
+Beyond the technical functionality of \progname{}, our team has several external goals:
+
+\begin{itemize}
+  \item \textbf{Capstone EXPO Presentation:} Deliver a professional and visually engaging demonstration
+        at the Capstone Expo, with the aim of attracting positive attention from judges, professors, 
+        and industry visitors.
+  \item \textbf{Portfolio and Resume Value:} Build a polished project that can be showcased in 
+        job interviews and graduate school applications, demonstrating teamwork, technical depth, 
+        and the ability to solve real-world problems.
+  \item \textbf{Research and Learning Opportunity:} Gain hands-on experience with state-of-the-art
+        computer vision methods (YOLO, tracking algorithms, and coat-pattern recognition), 
+        preparing us for future research or employment in AI/ML.
+  \item \textbf{Collaboration Skills:} Strengthen our ability to work effectively as a multidisciplinary 
+        team, including communication, role rotation, and conflict resolution.
+  \item \textbf{Industry Impact:} Provide our industry partner with an early prototype that 
+        demonstrates the potential value of AI in modern dairy farm operations, 
+        even if the system is not yet production-ready.
+  \item \textbf{Academic Achievement:} Complete all deliverables to a high standard with the goal of 
+        achieving an A-level grade in the course.
+\end{itemize}
 
 \subsection*{Attendance}
+{\color{red} TBD}
 
 \subsubsection*{Expectations}
 
-\wss{What are your team's expectations regarding meeting attendance (being on
-time, leaving early, missing meetings, etc.)?}
+% \wss{What are your team's expectations regarding meeting attendance (being on
+% time, leaving early, missing meetings, etc.)?}
+Team members are expected to attend all scheduled meetings on time and to remain for the full
+duration unless prior notice has been given. Each member should come prepared with updates 
+on their assigned tasks and any questions or issues to raise. Missing meetings without notice 
+is strongly discouraged, as it affects both coordination and project progress.
 
 \subsubsection*{Acceptable Excuse}
-
-\wss{What constitutes an acceptable excuse for missing a meeting or a deadline?
-What types of excuses will not be considered acceptable?}
+% \wss{What constitutes an acceptable excuse for missing a meeting or a deadline?
+% What types of excuses will not be considered acceptable?}
+Acceptable excuses for missing a meeting or deadline include illness, family emergencies, 
+urgent academic conflicts (such as exams), or other circumstances outside of the team 
+member's control. Unacceptable excuses include simply forgetting, prioritizing unrelated 
+activities, or lack of time management. Team members are expected to notify the group 
+at least 24 hours in advance whenever possible.
 
 \subsubsection*{In Case of Emergency}
 
-\wss{What process will team members follow if they have an emergency and cannot
-attend a team meeting or complete their individual work promised for a team
-deliverable?}
+% \wss{What process will team members follow if they have an emergency and cannot
+% attend a team meeting or complete their individual work promised for a team
+% deliverable?}
+If a team member experiences an emergency that prevents attendance or completion of work, 
+they must notify the group as soon as possible via the primary communication channel (MS Teams). 
+The team will redistribute tasks as needed, and the member will be responsible for catching up 
+once they are able. If deadlines are affected, the Communication Lead will inform the advisor or TA.
+
+
 
 \subsection*{Accountability and Teamwork}
 
 \subsubsection*{Quality} 
+Each member is expected to deliver work that is functional, tested, and reviewed before submission. 
+Preparation for meetings should include progress updates, relevant questions, and proposed solutions. 
+Deliverables should be documented clearly and meet the coding standards and workflow processes agreed upon.
 
-\wss{What are your team's expectations regarding the quality
-of team members' preparation for team meetings and the quality of the
-deliverables that members bring to the team?}
+% \wss{What are your team's expectations regarding the quality
+% of team members' preparation for team meetings and the quality of the
+% deliverables that members bring to the team?}
 
 \subsubsection*{Attitude}
 
-\wss{What are your team's expectations regarding team members' ideas,
-interactions with the team, cooperation, attitudes, and anything else regarding
-team member contributions?  Do you want to introduce a code of conduct?  Do you
-want a conflict resolution plan?  Can adopt existing codes of conduct.}
+% \wss{What are your team's expectations regarding team members' ideas,
+% interactions with the team, cooperation, attitudes, and anything else regarding
+% team member contributions?  Do you want to introduce a code of conduct?  Do you
+% want a conflict resolution plan?  Can adopt existing codes of conduct.}
+Team members are expected to maintain a respectful and collaborative attitude. Contributions 
+should be constructive, and all members' ideas will be considered. Disagreements will be handled 
+professionally, focusing on resolving issues rather than personal conflicts. A simple code of conduct 
+applies: respect deadlines, respect teammates, and respect feedback.
+
 
 \subsubsection*{Stay on Track}
 
-\wss{What methods will be used to keep the team on track? How will your team
-ensure that members contribute as expected to the team and that the team
-performs as expected? How will your team reward members who do well and manage
-members whose performance is below expectations?  What are the consequences for
-someone not contributing their fair share?}
+% \wss{What methods will be used to keep the team on track? How will your team
+% ensure that members contribute as expected to the team and that the team
+% performs as expected? How will your team reward members who do well and manage
+% members whose performance is below expectations?  What are the consequences for
+% someone not contributing their fair share?}
 
-\wss{You may wish to use the project management metrics collected for the TA and
-instructor for this.}
+% \wss{You may wish to use the project management metrics collected for the TA and
+% instructor for this.}
 
-\wss{You can set target metrics for attendance, commits, etc.  What are the
-consequences if someone doesn't hit their targets?  Do they need to bring the
-coffee to the next team meeting?  Does the team need to make an appointment with
-their TA, or the instructor?  Are there incentives for reaching targets early?}
+% \wss{You can set target metrics for attendance, commits, etc.  What are the
+% consequences if someone doesn't hit their targets?  Do they need to bring the
+% coffee to the next team meeting?  Does the team need to make an appointment with
+% their TA, or the instructor?  Are there incentives for reaching targets early?}
+Progress will be tracked through GitHub Projects and Issues. Metrics such as number of commits, 
+issue completions, and attendance will be monitored. If a member consistently fails to contribute, 
+the issue will be raised first within the team, then with the TA if unresolved. Members who 
+exceed expectations may be recognized in team meetings or assigned leadership opportunities. 
+Consequences for repeated underperformance may include reallocation of responsibilities 
+or escalation to the course instructor.
 
 \subsubsection*{Team Building}
 
-\wss{How will you build team cohesion (fun time, group rituals, etc.)? }
+% \wss{How will you build team cohesion (fun time, group rituals, etc.)? }
+To build cohesion, the team will dedicate short portions of meetings for informal check-ins. 
+At major milestones, the team will plan a small group activity to celebrate progress. 
+The goal is to maintain a positive atmosphere and strengthen collaboration.
 
 \subsubsection*{Decision Making} 
 
-\wss{How will you make decisions in your group? Consensus?  Vote? How will you
-handle disagreements? }
+% \wss{How will you make decisions in your group? Consensus?  Vote? How will you
+% handle disagreements? }
+Decisions will be made by consensus whenever possible. If consensus cannot be reached within 
+a reasonable timeframe, a simple majority vote will be taken. In the event of a tie, the meeting chair 
+will make the final decision. Disputes that cannot be resolved internally will be escalated to the TA 
+or instructor for mediation.
 
 \end{document}
