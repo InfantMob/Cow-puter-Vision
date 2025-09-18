@@ -2,15 +2,19 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{hyperref} % For hyperlinks in the PDF
+
+\newcommand{\progname}{Cow-puter Vision} % Replace with your program name
+\newcommand{\authname}{Group 19\\Changhao Wu\\Zongcheng Li\\Ji Zhang\\Baoning Zhang} % Replace with your team name
 
 \title{Development Plan\\\progname}
 
 \author{\authname}
 
-\date{}
+\date{\today}
 
-\input{../Comments}
-\input{../Common}
+\input{../Comments} % For comments
+\input{../Common} % For common macros
 
 \begin{document}
 
@@ -22,8 +26,7 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
+2025-09-18 & All & Initial draft of Development Plan \\
 ... & ... & ...\\
 \bottomrule
 \end{tabularx}
@@ -31,8 +34,16 @@ Date2 & Name(s) & Description of changes\\
 
 \newpage{}
 
-\wss{Put your introductory blurb here.  Often the blurb is a brief roadmap of
-what is contained in the report.}
+%\wss{Put your introductory blurb here.  Often the blurb is a brief roadmap of
+%what is contained in the report.}
+
+\section{Development Plan Overview}
+The development plan for \progname{} outlines how our team will organize, develop, 
+and deliver an AI-based system to identify cows by their black-white patterns on their back 
+and detect potential health issues. This document includes our confidential information, 
+IP to protect, Copyright license, Team meeting plan, Team communication plan, Team member 
+roles, Workflow plan, Project decomposition and scheduling, Proof of concept demonstration 
+plan, Expected technology, and Coding standard.
 
 \wss{Additional information on the development plan can be found in the
 \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
@@ -40,57 +51,129 @@ what is contained in the report.}
 
 \section{Confidential Information?}
 
-\wss{State whether your project has confidential information from industry, or
-not.  If there is confidential information, point to the agreement you have in
-place.}
+%\wss{State whether your project has confidential information from industry, or
+%not.  If there is confidential information, point to the agreement you have in
+%place.}
+%\wss{For most teams this section will just state that there is no confidential
+%information to protect.}
 
-\wss{For most teams this section will just state that there is no confidential
-information to protect.}
+Our project does not involve confidential information from industry. 
+All data and models will be based on publicly available datasets or 
+collected in compliance with open-source or academic research guidelines.
+
 \section{IP to Protect}
 
-\wss{State whether there is IP to protect.  If there is, point to the agreement.
-All students who are working on a project that requires an IP agreement are also
-required to sign the ``Intellectual Property Guide Acknowledgement.''}
+%\wss{State whether there is IP to protect.  If there is, point to the agreement.
+%All students who are working on a project that requires an IP agreement are also
+%required to sign the ``Intellectual Property Guide Acknowledgement.''}
+
+There is no proprietary intellectual property (IP) to protect for this project. 
+The outputs will be published under an open-source license to encourage 
+collaboration and reproducibility.
 
 \section{Copyright License}
 
-\wss{What copyright license is your team adopting.  Point to the license in your
-repo.}
+%\wss{What copyright license is your team adopting.  Point to the license in your
+%repo.}
+
+The team has chosen the MIT License, which will be included in the GitHub 
+repository. This license provides flexibility for others to use, modify, 
+and distribute the project with proper attribution.
+
 
 \section{Team Meeting Plan}
 
-\wss{How often will you meet? where?}
+%\wss{How often will you meet? where?}
 
-\wss{If the meeting is a physical location (not virtual), out of an abundance of
-caution for safety reasons you shouldn't put the location online}
+%\wss{If the meeting is a physical location (not virtual), out of an abundance of
+%caution for safety reasons you shouldn't put the location online}
 
-\wss{How often will you meet with your industry advisor?  when?  where?}
+%\wss{How often will you meet with your industry advisor?  when?  where?}
 
-\wss{Will meetings be virtual?  At least some meetings should likely be
-in-person.}
+%\wss{Will meetings be virtual?  At least some meetings should likely be
+%in-person.}
 
-\wss{How will the meetings be structured?  There should be a chair for all meetings.  There should be an agenda for all meetings.}
+%\wss{How will the meetings be structured?  There should be a chair for all meetings.  There should be an agenda for all meetings.}
+\begin{itemize}
+  \item Team check-in meetings will be held twice weekly via Microsoft Teams or Zoom, all team members are expected to attend
+  and share their progress.
+  \item An in-person meeting will be scheduled at least once per month on campus.
+  \item The industry advisor will meet with the team weekly, virtually. Including check-in and Q&A.
+  \item Each meeting will have a designated chair and note-taker, with an agenda shared in advance.
+\end{itemize}
 
 \section{Team Communication Plan}
 
-\wss{Issues on GitHub should be part of your communication plan.}
+%\wss{Issues on GitHub should be part of your communication plan.}
+\begin{itemize}
+  \item Primary communication will be through MS Teams for quick messages and updates.
+  \item Email will be used for formal communications and sharing important documents.
+  \item Regular progress will be shared in a dedicated GitHub repository.
+  \item GitHub Issues will be used to track lecture attendance, tasks, bugs, and feature requests.
+  \item A shared file folder on MS Teams will be used for collaborative document editing and storage.
+\end{itemize}
 
 \section{Team Member Roles}
 
-\wss{You should identify the types of roles you anticipate, like notetaker,
-leader, meeting chair, reviewer.  Assigning specific people to those roles is
-not necessary at this stage.  In a student team the role of the individuals will
-likely change throughout the year.}
+% \wss{You should identify the types of roles you anticipate, like notetaker,
+% leader, meeting chair, reviewer.  Assigning specific people to those roles is
+% not necessary at this stage.  In a student team the role of the individuals will
+% likely change throughout the year.}
+
+Every team member is responsible for attending meetings, replying to messages, creating issues, coding, testing,
+reviewing code, and documentation.  In addition, team members will take on
+the following rotating roles:
+
+\subsection*{Meeting Chair}
+Leads meetings and ensures meetings stay on track.
+Every team member will take turns being the chair.
+
+\subsection*{Note-Taker}
+Records meeting minutes, captures action items, and distributes notes to the team.
+Every team member will take turns being the note-taker.
+
+\subsection*{Reviewer}
+Reviews code contributions, provides feedback, and ensures coding standards are met.
+Zongcheng Li, Ji Zhang and Baoning Zhang will primarily take on this role, but all team members are encouraged to participate in code reviews.
+
+\subsection*{Integrator}
+Merges code contributions, resolves conflicts, and ensures the codebase remains stable.
+Changhao Wu and Zongcheng Li will primarily take on this role, but all team members are encouraged to participate in integration tasks.
+
+\subsection*{Lead Developer}
+Oversees the technical direction of the AI/ML pipeline, coordinates integration 
+between modules, and supports other members in debugging and implementation.
+Changhao Wu and Zongcheng Li will primarily take on this role, but all team members are encouraged to contribute to technical decisions.
+All team members will contribute to development tasks.
+
+\subsection*{Communication Lead}
+Prepares agendas, manages communication with the industry advisor, schedules meetings, and ensures effective communication within the team and with external stakeholders.
+Zongcheng Li and Changhao Wu will primarily take on this role, but all team members are encouraged to participate in communication tasks.
 
 \section{Workflow Plan}
 
-\begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classification, etc.?
-  \item Use of CI/CD
-\end{itemize}
-
+% \begin{itemize}
+% 	\item How will you be using git, including branches, pull request, etc.?
+% 	\item How will you be managing issues, including template issues, issue
+% 	classification, etc.?
+%   \item Use of CI/CD
+% \end{itemize}
+The following workflow will be adopted for the project:
+\begin{enumerate}
+    \item Pull any changes from the main branch to ensure the local repository is up-to-date.
+    \item Create a new branch for each feature or bug fix, following the naming convention \texttt{feature/feature-name} or \texttt{bugfix/bug-name}.
+    \item Create a draft of the structure of the code/documentation. 
+    \item Implement the functions without dependencies first, then the functions with dependencies.
+    \item Commit changes frequently with clear, descriptive messages.
+    \item Push the branch to the remote repository on GitHub.
+    \item Open a pull request (PR) to merge the feature/bugfix branch into the main branch.
+    \item Assign at least one team member as a reviewer for the PR.
+    \item Address any feedback from the reviewer(s) and make necessary changes.
+    \item Once approved, the PR will be merged into the main branch.
+    \item Delete the feature/bugfix branch after merging to keep the repository clean.
+    \item Use GitHub Issues to track tasks, bugs, and feature requests, with appropriate labels for classification.
+    \item Update any changes in the weekly check-in meetings.
+\end{enumerate}
 \section{Project Decomposition and Scheduling}
 
 \begin{itemize}
