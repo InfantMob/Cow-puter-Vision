@@ -1,5 +1,5 @@
 \documentclass{article}
-
+\usepackage{parskip} 
 \usepackage{tabularx}
 \usepackage{booktabs}
 
@@ -17,16 +17,16 @@
 \maketitle
 
 \begin{table}[hp]
-\caption{Revision History} \label{TblRevisionHistory}
-\begin{tabularx}{\textwidth}{llX}
-\toprule
-\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
-\midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
-\bottomrule
-\end{tabularx}
+    \caption{Revision History} \label{TblRevisionHistory}
+        \begin{tabularx}{\textwidth}{llX}
+        \toprule
+        \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+        \midrule
+            Sept. 16, 2025  & Changhao Wu           & Initial Draft         \\
+            Date            & Name(s)               & Description of changes\\
+            ...             & ...                   & ...                   \\
+        \bottomrule
+        \end{tabularx}
 \end{table}
 
 \section{Problem Statement}
@@ -38,24 +38,143 @@ Date2 & Name(s) & Description of changes\\
 \wss{You can change the section headings, as long as you include the required
 information.}
 
+
 \subsection{Problem}
 
+    On modern dairy farms, many routine tasks require farmers to quickly locate and 
+    separate specific cows from the herd. Examples include providing medical treatment 
+    to a sick cow, monitoring the recovery of an injured animal, collecting milk samples 
+    for quality testing, administering vaccines, or tracking cows with unusual feeding 
+    or reproductive behaviors.  
+
+    \setlength{\parskip}{0.6em} 
+
+    Currently, locating specific animals is highly time-consuming. Farmers often 
+    have to walk through an entire pen, visually check ear tag numbers one by one, 
+    and manually identify the right cow. This process is not only slow and 
+    labor-intensive, but also stressful for both workers and animals.
+
+    \setlength{\parskip}{0.6em} 
+
+    Alternative identification methods such as RFID chips or electronic collars 
+    do exist, but they require costly infrastructure, can be prone to technical 
+    failure, and may still require manual intervention to physically separate or 
+    observe the animal. In addition, ear tags can be lost or damaged, further reducing 
+    reliability.  
+
+    \setlength{\parskip}{0.6em} 
+
+    The problem is compounded by the fact that cows are large, mobile herd animals. 
+    In a crowded barn or pasture, they are constantly moving, blocking each other 
+    from view, or clustering together, making manual identification even more 
+    difficult. Under these conditions, locating a single cow can take far longer 
+    than planned and disrupt other farm operations. 
+
+
 \subsection{Inputs and Outputs}
+
+
+\begin{itemize}
+    \item \textbf{Inputs}
+          \begin{itemize}
+              \item Video footage of dairy cows from static or mobile cameras
+          \item Optional annotated datasets consisting of static images or pre-recorded videos (training and evaluation)
+          \end{itemize}
+
+    \item \textbf{Outputs}
+          \begin{itemize}
+              \item Bounding boxes around each detected cow
+              \item Tracking IDs assigned to each cow across video frames
+              \item Predicted identity of each cow (based on coat pattern classification)
+              \item Annotated video stream showing IDs and identities
+          \end{itemize}
+\end{itemize}
+
 
 \wss{Characterize the problem in terms of ``high level'' inputs and outputs.  
 Use abstraction so that you can avoid details.}
 
+
 \subsection{Stakeholders}
+
+\subsubsection*{\color{blue}{Direct Stakeholders}}
+\begin{enumerate}
+    \item\textbf{Cattleytics Inc. (Industry Partner)}: The primary stakeholder 
+          and end user of the system. They benefit directly from improved efficiency 
+          in locating, identifying, and monitoring individual cows for treatment, 
+          feeding management, and general herd health.
+    \end{enumerate}
+
+
+\subsubsection*{\color{blue}{Indirect Stakeholders}}
+\begin{enumerate}
+    \item \textbf{Veterinarians}: By enabling faster and more reliable identification of target animals, 
+            veterinarians can administer treatments and health checks more efficiently, improving overall herd health management.
+    \item \textbf{Other Dairy Farmers and Ranchers}: Since the system is designed with relatively low deployment cost, it can be adopted by other farms to reduce 
+            labor demands, increase operational efficiency, and ultimately improve profitabilit.
+    \item \textbf{Animal Welfare and Protection Organizations}: Better tracking and monitoring ensure that cows receive 
+            timely care, reducing stress and discomfort. These outcomes align with the goals of organizations advocating 
+            for animal well-being and ethical treatment in agriculture.
+\end{enumerate}
+
 
 \subsection{Environment}
 
+\subsubsection*{\color{blue}{Hardware Environment}}
+\begin{itemize}
+    \item Deployment will take place in dairy farm environments such as barns, feeding areas, or open pens, 
+          where lighting, shadows, and occlusion from other animals may affect visibility.
+    \item Input devices will consist of fixed surveillance cameras installed in barns or portable cameras (e.g., smartphones).
+    \item Development and training will primarily be conducted on a GPU-enabled workstation 
+      (e.g., a desktop equipped with an NVIDIA RTX 4060 or higher-class GPU).
+    \item For later testing, the system may also be evaluated on lightweight hardware (e.g., NVIDIA Jetson) 
+          to explore potential edge deployment, but the primary focus is on farm-level camera input rather than embedded control.
+\end{itemize}
+
+
+\subsubsection*{\color{blue}{Software Environment}}
+\begin{itemize}
+    \item Operating System: Ubuntu Linux (WSL2 on Windows will also be used for development).
+    \item Programming Language: Python.
+    \item Core Libraries and Frameworks: PyTorch, Ultralytics YOLOv8, OpenCV, scikit-learn, and ByteTrack.
+    \item Development Tools: Git (for version control), GitHub (for remote collaboration and repository hosting), 
+      GitHub Projects (for task management), GitHub Actions (for CI/CD), and VS Code as the primary IDE.
+    \item Testing and Evaluation Tools: pytest for unit testing, flake8/black for linting and formatting, 
+          and TensorBoard/Matplotlib for model evaluation and visualization.
+\end{itemize}
+
 \wss{Hardware and Software Environment}
 
+
 \section{Goals}
+The primary goal of this project is to design and implement a computer vision system that can:
+    \begin{enumerate}
+        \item Detect and localize cows in video streams.
+        \item Track individual cows across consecutive frames.
+        \item Identify cows based on unique coat patterns, enabling individual-level monitoring.
+    \end{enumerate}
 
 \section{Stretch Goals}
+    \begin{itemize}
+        \item Deploy the system on an embedded device (e.g., Jetson Nano/Xavier).
+        \item Extend recognition to other animals or farm contexts.
+        \item Provide a user-friendly dashboard for farmers to visualize and export cow activity/identity logs.
+    \end{itemize}
+
 
 \section{Extras}
+    \subsection{Performance Report:}
+        A comprehensive performance report will be created to document the system's 
+        accuracy, speed, and reliability. This will include quantitative evaluation of detection, tracking, 
+        and identification models under different conditions (e.g., lighting, occlusion, herd density). 
+        The report will provide insights into system limitations and suggest areas for future improvement.
+    \subsection{User Manual:}
+        A user-friendly manual will be prepared to guide non-technical users, such as farmers 
+        and dairy workers, through system setup and operation. The manual will include step-by-step installation 
+        instructions, examples of typical use cases, troubleshooting tips, and recommendations for best practices 
+        when deploying the system on a farm.
+
+
 
 \wss{For CAS 741: State whether the project is a research project. This
 designation, with the approval (or request) of the instructor, can be modified
