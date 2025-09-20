@@ -25,7 +25,7 @@
         \midrule
             Sept. 16, 2025  & Changhao Wu           & Initial Draft                                 \\
             Sept. 20, 2025  & Changhao Wu           & Updated Problem Statement and Goals document  \\
-            Date            & Name(s)               & Description of changes                        \\
+            Sept. 20, 2025  & Changhao Wu           & Completed Reflection section                  \\
             ...             & ...                   & ...                                           \\
         \bottomrule
         \end{tabularx}
@@ -190,12 +190,63 @@ over the course of the term.}
 \input{../Reflection.tex}
 
 \begin{enumerate}
-    \item What went well while writing this deliverable? 
+
+    \setlength{\parskip}{1.6em} 
+    
+    \item What went well while writing this deliverable?
+    
+    One positive outcome was that our team was able to refine the level of detail in our 
+    problem statement and goals. Initially, we included too many technical specifics, which 
+    risked restricting our future implementation choices. Under the guidance of the TA, 
+    we revised these sections to be more abstract yet still measurable, ensuring they provide 
+    direction without prematurely narrowing our design space. In addition, we carried out 
+    early tests on potential external components that the project might depend on. This gave 
+    us a baseline understanding of the tools and libraries available and allowed us to set 
+    realistic goals that stretch our abilities without being unachievable.
+
     \item What pain points did you experience during this deliverable, and how
     did you resolve them?
+
+    A major challenge was the relatively low and inconsistent engagement from some team 
+    members, likely due to heavy workloads in other courses this term. This limited the 
+    amount of sustained progress we could make week to week. As individuals, we recognize 
+    that we need better time planning to avoid leaving tasks until just before deadlines. 
+    Such last-minute work does not leave sufficient time to polish the deliverables to 
+    a high standard. Another difficulty was our limited experience with disciplined use 
+    of version control. While we managed to use Git and GitHub for collaboration, our 
+    workflow lacked consistency, which could make the project harder to sustain in the 
+    long run. To resolve this, we intend to adopt clearer commit conventions, branch organization, 
+    and more frequent pushes so that our repository remains well-structured. 
+    In addition, we plan to protect the \texttt{main} branch by requiring that all 
+    changes go through a pull request, and that every pull request must be reviewed 
+    and approved before merging. This process will help us maintain code quality 
+    and accountability throughout the project.
+
+
     \item How did you and your team adjust the scope of your goals to ensure
     they are suitable for a Capstone project (not overly ambitious but also of
     appropriate complexity for a senior design project)?
+
+    When defining our goals, we initially considered ambitious objectives such as pursuing 
+    both the current project and an additional module for lameness detection in cows. 
+    However, after further investigation, we realized that this direction would be far too 
+    complex given the resources and circumstances currently available to us. Because lameness 
+    detection has high commercial value, there are very few publicly available projects or 
+    datasets we could reference. Building such a system would likely require us to collect data 
+    from scratch, for example by visiting farms, recording videos, and learning how to reliably 
+    label lameness under veterinary guidance. Given the scale of this work and the heavy 
+    course workload that most of our team members are already carrying this term, it became 
+    clear that attempting both projects in parallel would not be feasible. 
+
+    After reflection, we scaled our scope down to focus on three core capabilities: detecting 
+    cows, maintaining continuous tracking in video, and identifying individuals. Stretch goals 
+    were then defined for deployment on embedded devices and broader applicability to other 
+    livestock. Importantly, the scope we chose remains within a reasonable range of our current 
+    technical capacity, challenging us to go slightly beyond our comfort zone without being 
+    unrealistic. This balance ensures the project is both feasible and sufficiently challenging 
+    to be worthy of a Capstone project.
+
+
 \end{enumerate}  
 
 \end{document}
