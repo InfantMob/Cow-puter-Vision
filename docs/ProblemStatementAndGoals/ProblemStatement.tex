@@ -2,6 +2,7 @@
 \usepackage{parskip} 
 \usepackage{tabularx}
 \usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
 
 \title{Problem Statement and Goals\\\progname}
 
@@ -22,9 +23,10 @@
         \toprule
         \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
         \midrule
-            Sept. 16, 2025  & Changhao Wu           & Initial Draft         \\
-            Date            & Name(s)               & Description of changes\\
-            ...             & ...                   & ...                   \\
+            Sept. 16, 2025  & Changhao Wu           & Initial Draft                                 \\
+            Sept. 20, 2025  & Changhao Wu           & Updated Problem Statement and Goals document  \\
+            Date            & Name(s)               & Description of changes                        \\
+            ...             & ...                   & ...                                           \\
         \bottomrule
         \end{tabularx}
 \end{table}
@@ -56,14 +58,6 @@ information.}
 
     \setlength{\parskip}{0.6em} 
 
-    Alternative identification methods such as RFID chips or electronic collars 
-    do exist, but they require costly infrastructure, can be prone to technical 
-    failure, and may still require manual intervention to physically separate or 
-    observe the animal. In addition, ear tags can be lost or damaged, further reducing 
-    reliability.  
-
-    \setlength{\parskip}{0.6em} 
-
     The problem is compounded by the fact that cows are large, mobile herd animals. 
     In a crowded barn or pasture, they are constantly moving, blocking each other 
     from view, or clustering together, making manual identification even more 
@@ -77,16 +71,15 @@ information.}
 \begin{itemize}
     \item \textbf{Inputs}
           \begin{itemize}
-              \item Video footage of dairy cows from static or mobile cameras
-          \item Optional annotated datasets consisting of static images or pre-recorded videos (training and evaluation)
+                \item Visual data streams from on-farm environments.
+                \item Supplementary annotated datasets for training and evaluation.
           \end{itemize}
 
     \item \textbf{Outputs}
           \begin{itemize}
-              \item Bounding boxes around each detected cow
-              \item Tracking IDs assigned to each cow across video frames
-              \item Predicted identity of each cow (based on coat pattern classification)
-              \item Annotated video stream showing IDs and identities
+              \item Information that distinguishes individual cows.
+              \item Consistent identification of cows across time.
+              \item Visual outputs annotated with each cow's predicted identity
           \end{itemize}
 \end{itemize}
 
@@ -149,16 +142,16 @@ Use abstraction so that you can avoid details.}
 \section{Goals}
 The primary goal of this project is to design and implement a computer vision system that can:
     \begin{enumerate}
-        \item Detect and localize cows in video streams.
-        \item Track individual cows across consecutive frames.
-        \item Identify cows based on unique coat patterns, enabling individual-level monitoring.
+        \item Accurately locate cows within visual inputs (images or video), ensuring that the presence of animals can be detected without manual inspection.
+        \item For video data, maintain continuous tracking of individual cows across frames, ensuring that the same animal is consistently recognized over time.
+        \item Provide a practical application scenario: given the information of a target cow (e.g., name or identifier), the system highlights this cow within the input data, eliminating the need for manual searching.
     \end{enumerate}
 
 \section{Stretch Goals}
     \begin{itemize}
-        \item Deploy the system on an embedded device (e.g., Jetson Nano/Xavier).
-        \item Extend recognition to other animals or farm contexts.
-        \item Provide a user-friendly dashboard for farmers to visualize and export cow activity/identity logs.
+        \item Enable deployment on portable or embedded platforms, making the system accessible directly on-farm without requiring high-end computing infrastructure.
+        \item Broaden applicability by extending recognition capabilities beyond cows to other livestock or farm management contexts.
+        \item Deliver a farmer-oriented interface that visualizes animal activity and identity records, and allows data export to support decision-making and reporting.
     \end{itemize}
 
 
