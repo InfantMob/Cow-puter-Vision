@@ -27,6 +27,7 @@
 2025-09-18 & Zongcheng Li & Initial draft of Development Plan \\
 2025-09-18 & All Members& Check-in with TA and updates based on feedback \\
 2025-09-20 & Zongcheng Li & Finish remaining sections of the Development Plan \\
+2025-09-21 & Ji Zhang & Updated Appendix, adjusted formatting, and added a reference.\\
 ... & ... & ...\\
 \bottomrule
 \end{tabularx}
@@ -39,15 +40,15 @@
 
 \section{Development Plan Overview}
 The development plan for \progname{} outlines how our team will organize, develop, 
-nd deliver an AI-based system to identify cows by their black-white patterns on their back 
+and deliver an AI-based system to identify cows by their black-white patterns on their back 
 and detect potential health issues. This document includes our Confidential information, 
 IP to protect, Copyright license, Team meeting plan, Team communication plan, Team member 
 roles, Workflow plan, Project decomposition and scheduling, Proof of concept demonstration 
 plan, Expected technology, and Coding standard.
 
-\wss{Additional information on the development plan can be found in the
-\href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
-{lecture slides}.}
+% \wss{Additional information on the development plan can be found in the
+% \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
+% {lecture slides}.}
 
 \section{Confidential Information?}
 
@@ -361,7 +362,7 @@ to continuously improve our coding practices.
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
+% \wss{Not required for CAS 741}
 
 \input{../Reflection.tex} 
 
@@ -408,12 +409,36 @@ miss any deliverables.
   \end{itemize}
 \end{enumerate}
 
+Ji's answer: \\
+\begin{enumerate}
+  \item I think the development plan is like a "roadmap" for the team. Without a clear plan, the team is prone to 
+problems such as ambiguous goals and unclear responsibilities. By formulating a Development Plan, we can unify our 
+understanding from the very beginning, break down the project into executable stage tasks, and clearly define each 
+person's role and responsibilities. This not only improves team efficiency but also avoids conflicts due to 
+misunderstandings or differences in the later stages.
+  \item From my perspective, using CI/CD has several advantages/disadvantages:
+  \begin{itemize}
+    \item Advantages:
+      
+        CI/CD enables continuous integration of code and automatic testing, allowing issues to be detected at 
+      an early stage, giving sufficient time for remediation. At the same time, it also makes the deployment 
+      process more reliable, reduces risks brought about by human operations, and increases the iteration speed.
+      
+    \item Disadvantages:
+      
+        The initial setup of CI/CD requires additional time and effort. Moreover, if the configuration is not 
+        perfect, the pipeline may frequently encounter errors, which will instead slow down the progress. 
+        Additionally, as the project scale increases, the maintenance cost of CI/CD will also rise.
+      
+  \end{itemize}
+\end{enumerate}
+
 
 \section*{Appendix --- Team Charter}
 
-\wss{borrows from
-\href{https://engineering.up.edu/industry_partnerships/files/team-charter.pdf}
-{University of Portland Team Charter}}
+% \wss{borrows from
+% \href{https://engineering.up.edu/industry_partnerships/files/team-charter.pdf}
+% {University of Portland Team Charter}}
 %This link doesn't work
 
 \subsection*{External Goals}
@@ -540,4 +565,23 @@ and then vote if necessary. The majority opinion will be adopted.
 If we cannot reach a consensus, we will seek advice from our industry advisor or TA.
 
 
+\newpage{}
+
+\section*{References}
+
+\begin{enumerate}
+  \item Marinache, A. \textit{Proof of Concept and Development Plan (Lecture Slides)}. McMaster University, CAS 741.  
+  Available at: \url{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf}
+
+  \item University of Portland. \textit{Team Charter Guidelines}.  
+  Available at: \url{https://engineering.up.edu/industry_partnerships/files/team-charter.pdf}
+
+  \item Python Software Foundation. \textit{PEP 8 - Style Guide for Python Code}.  
+  Available at: \url{https://peps.python.org/pep-0008/}
+
+  \item GitHub Docs. \textit{About GitHub Actions CI/CD}.  
+  Available at: \url{https://github.com/solutions/use-case/ci-cd}
+\end{enumerate}
+
 \end{document}
+
