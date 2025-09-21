@@ -162,7 +162,7 @@ Zongcheng Li and Changhao Wu will primarily take on this role, but all team memb
 %   \item Use of CI/CD
 % \end{itemize}
 The following workflow will be adopted for the project:
-\begin{itemize}
+\begin{enumerate}
   \item Pull any changes from the main branch before starting new work.
 	\item Create a new branch for each feature or bug fix, following the naming convention `feature/feature-name` or `bugfix/bug-name`.
 	\item Create a draft of the structure of the code/documentation.
@@ -176,7 +176,7 @@ The following workflow will be adopted for the project:
 	\item Delete the feature/bugfix branch after merging to keep the repository clean.
 	\item Use GitHub Issues to track tasks, bugs, and feature requests, with appropriate labels for classification.
 	\item Update any changes in the weekly check-in meetings.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Project Decomposition and Scheduling}
@@ -274,45 +274,88 @@ The main risks identified for the success of the project include:
 The proof of concept demonstration will focus on showcasing the core 
 functionality of the AI-based cow identification. \\
 This will include:
-
+\begin{itemize}
+  \item A working prototype that can identify cows from images or video feeds.
+  \item A basic user interface for interacting with the system.
+  \item Initial results from model training and evaluation.
+  \item A plan for addressing the identified risks, including data collection strategies, 
+  algorithm selection, and integration approaches.
+\end{itemize}
+If the proof of concept is successful, it will provide confidence that the project can be completed within the given constraints.
 
 \section{Expected Technology}
 
-\wss{What programming language or languages do you expect to use?  What external
-libraries?  What frameworks?  What technologies.  Are there major components of
-the implementation that you expect you will implement, despite the existence of
-libraries that provide the required functionality.  For projects with machine
-learning, will you use pre-trained models, or be training your own model?  }
 
-\wss{The implementation decisions can, and likely will, change over the course
-of the project.  The initial documentation should be written in an abstract way;
-it should be agnostic of the implementation choices, unless the implementation
-choices are project constraints.  However, recording our initial thoughts on
-implementation helps understand the challenge level and feasibility of a
-project.  It may also help with early identification of areas where project
-members will need to augment their training.}
+% \wss{What programming language or languages do you expect to use?  What external
+% libraries?  What frameworks?  What technologies.  Are there major components of
+% the implementation that you expect you will implement, despite the existence of
+% libraries that provide the required functionality.  For projects with machine
+% learning, will you use pre-trained models, or be training your own model?  }
 
-Topics to discuss include the following:
+% \wss{The implementation decisions can, and likely will, change over the course
+% of the project.  The initial documentation should be written in an abstract way;
+% it should be agnostic of the implementation choices, unless the implementation
+% choices are project constraints.  However, recording our initial thoughts on
+% implementation helps understand the challenge level and feasibility of a
+% project.  It may also help with early identification of areas where project
+% members will need to augment their training.}
 
+% Topics to discuss include the following:
+
+% \begin{itemize}
+% \item Specific programming language
+% \item Specific libraries
+% \item Pre-trained models
+% \item Specific linter tool (if appropriate)
+% \item Specific unit testing framework
+% \item Investigation of code coverage measuring tools
+% \item Specific plans for Continuous Integration (CI), or an explanation that CI
+%   is not being done
+% \item Specific performance measuring tools (like Valgrind), if
+%   appropriate
+% \item Tools you will likely be using?
+% \end{itemize}
+
+The team plans to use the following technologies for the development of \progname{}:
 \begin{itemize}
-\item Specific programming language
-\item Specific libraries
-\item Pre-trained models
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Tools you will likely be using?
+\item Programming language: Python
+\item External Libraries: TensorFlow, OpenCV, NumPy, Flask
+\item Pre-trained models: YOLOv5 for object detection
+\item Linter tool: flake8
+\item Unit testing framework: pytest
+\item Investigation of code coverage measuring tools: coverage.py
+\item Plans for Continuous Integration (CI), or an explanation that CI
+  is not being done: GitHub Actions will be used for CI/CD.
+\item Performance measuring tools: TensorBoard for monitoring model training.
+\item Tools: Git, GitHub, and GitHub Projects.
 \end{itemize}
 
-\wss{git, GitHub and GitHub projects should be part of your technology.}
+% \wss{git, GitHub and GitHub projects should be part of your technology.}
 
 \section{Coding Standard}
 
-\wss{What coding standard will you adopt?}
+% \wss{What coding standard will you adopt?}
+Because we want to ensure code readability and maintainability,
+we will adopt the PEP 8 coding standard for Python, which emphasizes readability and consistency.
+
+To be specific, we will follow these key guidelines:
+\begin{itemize}
+  \item Use 4 spaces per indentation level.
+  \item Limit all lines to a maximum of 79 characters.
+  \item Use blank lines to separate functions and classes, and larger blocks of code inside functions.
+  \item Use docstrings to describe all public modules, functions, classes, and methods.
+  \item Use meaningful variable and function names that convey their purpose.
+  \item Follow naming conventions: use CamelCase for classes, snake\_case for functions and variables.
+  \item Avoid using global variables; prefer passing parameters and returning values.
+  \item Write comments to explain the purpose of complex code sections.
+  \item Ensure consistent use of whitespace in expressions and statements.
+  \item Use version control (Git) effectively, with clear commit messages and branching strategies.
+  \item Conduct regular code reviews to ensure adherence to the coding standard and improve code quality.
+  \item Use automated tools like flake8 to check for compliance with the coding standard.
+\end{itemize}
+
+Additionally, we encourage team members to write comments and provide constructive feedback during code reviews
+to continuously improve our coding practices.
 
 \newpage{}
 
@@ -320,7 +363,7 @@ Topics to discuss include the following:
 
 \wss{Not required for CAS 741}
 
-\input{../Reflection.tex}
+\input{../Reflection.tex} 
 
 \begin{enumerate}
     \item Why is it important to create a development plan prior to starting the
@@ -340,54 +383,118 @@ Topics to discuss include the following:
 
 \end{enumerate}
 
-\newpage{}
+Zongcheng's answer: \\
+\begin{enumerate}
+  \item It is important to create a development plan prior to starting the project because it shows clear direction of development, 
+helps identify potential risks and challenges early on and avoid potential conflicts. \\
+We had a discussion on the development plan and 
+get some important consensus, including how the tasks will be assigned, how the communication will be, and how the workflow will be.
+So that everyone is on the same page and work towards the same goal. It also helps us to understand the deadlines so that nobody will 
+miss any deliverables.
+  \item From my perspective, using CI/CD has several advantages/disadvantages:
+  \begin{itemize}
+    \item Advantages:
+      \begin{itemize}
+        \item Faster development: it is a rapid way to deliver code changes, allowing for quicker feedback and iteration.
+        \item Better collaboration: provides a shared platform, good for team collaboration.
+        \item Minimize error: since it is automated, it reduces the likelihood of manual error in repeated tasks.
+      \end{itemize}
+    \item Disadvantages:
+      \begin{itemize}
+        \item Difficult to start: it is complex and time-consuming to set up initially.
+        \item Maintenance overhead: it needs continuous maintenance to ensure it works properly.
+        \item Make me  lazier: since it is automated, I may rely too much on it and not pay attention to the details.
+      \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
 
 \section*{Appendix --- Team Charter}
 
 \wss{borrows from
 \href{https://engineering.up.edu/industry_partnerships/files/team-charter.pdf}
 {University of Portland Team Charter}}
+%This link doesn't work
 
 \subsection*{External Goals}
 
-\wss{What are your team's external goals for this project? These are not the
-goals related to the functionality or quality fo the project.  These are the
-goals on what the team wishes to achieve with the project.  Potential goals are
-to win a prize at the Capstone EXPO, or to have something to talk about in
-interviews, or to get an A+, etc.}
+% \wss{What are your team's external goals for this project? These are not the
+% goals related to the functionality or quality fo the project.  These are the
+% goals on what the team wishes to achieve with the project.  Potential goals are
+% to win a prize at the Capstone EXPO, or to have something to talk about in
+% interviews, or to get an A+, etc.}
+Our team's external goals for this project include:
+\begin{itemize}
+  \item Make something useful for the industry partner.
+  \item Gain practical experience in AI/ML development and write on resume.
+  \item Achieve a high grade in the course, we aim for an A.
+\end{itemize}
 
 \subsection*{Attendance}
 
 \subsubsection*{Expectations}
 
-\wss{What are your team's expectations regarding meeting attendance (being on
-time, leaving early, missing meetings, etc.)?}
+% \wss{What are your team's expectations regarding meeting attendance (being on
+% time, leaving early, missing meetings, etc.)?}
+We expect all team members to attend all scheduled meetings on time and stay for the entire duration. \\
+We understand that emergencies may arise, and in such cases, team members should notify the team as soon as possible.\\
+Missing meetings without a acceptable excuse may result in consequences as outlined in the "Stay on Track" section.
 
 \subsubsection*{Acceptable Excuse}
 
-\wss{What constitutes an acceptable excuse for missing a meeting or a deadline?
-What types of excuses will not be considered acceptable?}
+% \wss{What constitutes an acceptable excuse for missing a meeting or a deadline?
+% What types of excuses will not be considered acceptable?}
+We accept excuses such as:
+\begin{itemize}
+  \item Illness or medical emergencies
+  \item Family emergencies
+  \item Academic commitments (e.g., exams, presentations, course conflicts)
+  \item Pre-approved absences (e.g., prior commitments, work obligations)
+\end{itemize}
 
 \subsubsection*{In Case of Emergency}
 
-\wss{What process will team members follow if they have an emergency and cannot
-attend a team meeting or complete their individual work promised for a team
-deliverable?}
+% \wss{What process will team members follow if they have an emergency and cannot
+% attend a team meeting or complete their individual work promised for a team
+% deliverable?}
+Actions to take in case of an emergency:
+\begin{itemize}
+  \item Notify the team as soon as possible via MS Teams or email or other communication channels.
+  \item If it is a meeting with TA or industry partner, notify them as well.
+  \item Provide a brief explanation of the emergency and expected duration of absence.
+  \item If possible, delegate tasks to other team members to ensure continuity.
+  \item Upon return, catch up on missed work and communicate with the team about any challenges faced during the absence.
+\end{itemize}
 
 \subsection*{Accountability and Teamwork}
 
 \subsubsection*{Quality} 
 
-\wss{What are your team's expectations regarding the quality
-of team members' preparation for team meetings and the quality of the
-deliverables that members bring to the team?}
+% \wss{What are your team's expectations regarding the quality
+% of team members' preparation for team meetings and the quality of the
+% deliverables that members bring to the team?}
+Expectations regarding quality:
+\begin{itemize}
+  \item Prepare questions, updates, and relevant materials before each meeting.
+  \item Deliverables should be completed on time, and be able to run.
+  \item Team members should actively participate in discussions, and replyig to messages in a timely manner.
+\end{itemize}
 
 \subsubsection*{Attitude}
 
-\wss{What are your team's expectations regarding team members' ideas,
-interactions with the team, cooperation, attitudes, and anything else regarding
-team member contributions?  Do you want to introduce a code of conduct?  Do you
-want a conflict resolution plan?  Can adopt existing codes of conduct.}
+% \wss{What are your team's expectations regarding team members' ideas,
+% interactions with the team, cooperation, attitudes, and anything else regarding
+% team member contributions?  Do you want to introduce a code of conduct?  Do you
+% want a conflict resolution plan?  Can adopt existing codes of conduct.}
+
+Our expectations regarding attitude:
+\begin{itemize}
+  \item Be respectful of each other's ideas and opinions, even if they differ from our own.
+  \item Be open to constructive feedback and willing to provide the same to others.
+  \item Notify the team in advance (at least 24 hours) if unable to meet deadlines or attend meetings, this is important.
+  \item Keep up to date with project progress and contribute actively to discussions and tasks.
+  \item At least check the messages on MS Teams or Discord once a day.
+\end{itemize}
 
 \subsubsection*{Stay on Track}
 
@@ -405,15 +512,13 @@ want a conflict resolution plan?  Can adopt existing codes of conduct.}
 % coffee to the next team meeting?  Does the team need to make an appointment with
 % their TA, or the instructor?  Are there incentives for reaching targets early?}
 To keep the team on track, we will set clear milestones and deadlines for each phase of the project.
-Annoucements and reminders will be sent on MS Teams and Discord channels 
+Announcements and reminders will be sent on MS Teams and Discord channels
 to ensure everyone is aware of upcoming tasks and deadlines.
 
-If a team member consistently fails to meet expectations, 
-the team will first discuss the issue privately with the 
-individual to understand any challenges they may be facing.
-
-
-
+Attendance, code commits, and task completion will be monitored. 
+If a team member consistently fails to meet expectations, the team will first discuss the issue privately 
+with the individual to understand any challenges they may be facing. If the issue persists, 
+the team may consider meeting with the TA or instructor to seek guidance on how to best support the individual.
 
 \subsubsection*{Team Building}
 
