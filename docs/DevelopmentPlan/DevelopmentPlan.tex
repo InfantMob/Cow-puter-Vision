@@ -274,41 +274,63 @@ The main risks identified for the success of the project include:
 The proof of concept demonstration will focus on showcasing the core 
 functionality of the AI-based cow identification. \\
 This will include:
-
+\begin{itemize}
+  \item A working prototype that can identify cows from images or video feeds.
+  \item A basic user interface for interacting with the system.
+  \item Initial results from model training and evaluation.
+  \item A plan for addressing the identified risks, including data collection strategies, 
+  algorithm selection, and integration approaches.
+\end{itemize}
+If the proof of concept is successful, it will provide confidence that the project can be completed within the given constraints.
 
 \section{Expected Technology}
 
-\wss{What programming language or languages do you expect to use?  What external
-libraries?  What frameworks?  What technologies.  Are there major components of
-the implementation that you expect you will implement, despite the existence of
-libraries that provide the required functionality.  For projects with machine
-learning, will you use pre-trained models, or be training your own model?  }
 
-\wss{The implementation decisions can, and likely will, change over the course
-of the project.  The initial documentation should be written in an abstract way;
-it should be agnostic of the implementation choices, unless the implementation
-choices are project constraints.  However, recording our initial thoughts on
-implementation helps understand the challenge level and feasibility of a
-project.  It may also help with early identification of areas where project
-members will need to augment their training.}
+% \wss{What programming language or languages do you expect to use?  What external
+% libraries?  What frameworks?  What technologies.  Are there major components of
+% the implementation that you expect you will implement, despite the existence of
+% libraries that provide the required functionality.  For projects with machine
+% learning, will you use pre-trained models, or be training your own model?  }
 
-Topics to discuss include the following:
+% \wss{The implementation decisions can, and likely will, change over the course
+% of the project.  The initial documentation should be written in an abstract way;
+% it should be agnostic of the implementation choices, unless the implementation
+% choices are project constraints.  However, recording our initial thoughts on
+% implementation helps understand the challenge level and feasibility of a
+% project.  It may also help with early identification of areas where project
+% members will need to augment their training.}
 
+% Topics to discuss include the following:
+
+% \begin{itemize}
+% \item Specific programming language
+% \item Specific libraries
+% \item Pre-trained models
+% \item Specific linter tool (if appropriate)
+% \item Specific unit testing framework
+% \item Investigation of code coverage measuring tools
+% \item Specific plans for Continuous Integration (CI), or an explanation that CI
+%   is not being done
+% \item Specific performance measuring tools (like Valgrind), if
+%   appropriate
+% \item Tools you will likely be using?
+% \end{itemize}
+
+The team plans to use the following technologies for the development of \progname{}:
 \begin{itemize}
-\item Specific programming language
-\item Specific libraries
-\item Pre-trained models
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Tools you will likely be using?
+\item Programming language: Python
+\item External Libraries: TensorFlow, OpenCV, NumPy, Flask
+\item Pre-trained models: YOLOv5 for object detection
+\item Linter tool: flake8
+\item Unit testing framework: pytest
+\item Investigation of code coverage measuring tools: coverage.py
+\item Plans for Continuous Integration (CI), or an explanation that CI
+  is not being done: GitHub Actions will be used for CI/CD.
+\item Performance measuring tools: TensorBoard for monitoring model training.
+\item Tools: Git, GitHub, and GitHub Projects.
 \end{itemize}
 
-\wss{git, GitHub and GitHub projects should be part of your technology.}
+% \wss{git, GitHub and GitHub projects should be part of your technology.}
 
 \section{Coding Standard}
 
@@ -396,15 +418,13 @@ want a conflict resolution plan?  Can adopt existing codes of conduct.}
 % coffee to the next team meeting?  Does the team need to make an appointment with
 % their TA, or the instructor?  Are there incentives for reaching targets early?}
 To keep the team on track, we will set clear milestones and deadlines for each phase of the project.
-Annoucements and reminders will be sent on MS Teams and Discord channels 
+Announcements and reminders will be sent on MS Teams and Discord channels
 to ensure everyone is aware of upcoming tasks and deadlines.
 
-If a team member consistently fails to meet expectations, 
-the team will first discuss the issue privately with the 
-individual to understand any challenges they may be facing.
-
-
-
+Attendance, code commits, and task completion will be monitored. 
+If a team member consistently fails to meet expectations, the team will first discuss the issue privately 
+with the individual to understand any challenges they may be facing. If the issue persists, 
+the team may consider meeting with the TA or instructor to seek guidance on how to best support the individual.
 
 \subsubsection*{Team Building}
 
