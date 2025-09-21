@@ -162,7 +162,7 @@ Zongcheng Li and Changhao Wu will primarily take on this role, but all team memb
 %   \item Use of CI/CD
 % \end{itemize}
 The following workflow will be adopted for the project:
-\begin{itemize}
+\begin{enumerate}
   \item Pull any changes from the main branch before starting new work.
 	\item Create a new branch for each feature or bug fix, following the naming convention `feature/feature-name` or `bugfix/bug-name`.
 	\item Create a draft of the structure of the code/documentation.
@@ -176,7 +176,7 @@ The following workflow will be adopted for the project:
 	\item Delete the feature/bugfix branch after merging to keep the repository clean.
 	\item Use GitHub Issues to track tasks, bugs, and feature requests, with appropriate labels for classification.
 	\item Update any changes in the weekly check-in meetings.
-\end{itemize}
+\end{enumerate}
 
 
 \section{Project Decomposition and Scheduling}
@@ -334,7 +334,28 @@ The team plans to use the following technologies for the development of \prognam
 
 \section{Coding Standard}
 
-\wss{What coding standard will you adopt?}
+% \wss{What coding standard will you adopt?}
+Because we want to ensure code readability and maintainability,
+we will adopt the PEP 8 coding standard for Python, which emphasizes readability and consistency.
+
+To be specific, we will follow these key guidelines:
+\begin{itemize}
+  \item Use 4 spaces per indentation level.
+  \item Limit all lines to a maximum of 79 characters.
+  \item Use blank lines to separate functions and classes, and larger blocks of code inside functions.
+  \item Use docstrings to describe all public modules, functions, classes, and methods.
+  \item Use meaningful variable and function names that convey their purpose.
+  \item Follow naming conventions: use CamelCase for classes, snake\_case for functions and variables.
+  \item Avoid using global variables; prefer passing parameters and returning values.
+  \item Write comments to explain the purpose of complex code sections.
+  \item Ensure consistent use of whitespace in expressions and statements.
+  \item Use version control (Git) effectively, with clear commit messages and branching strategies.
+  \item Conduct regular code reviews to ensure adherence to the coding standard and improve code quality.
+  \item Use automated tools like flake8 to check for compliance with the coding standard.
+\end{itemize}
+
+Additionally, we encourage team members to write comments and provide constructive feedback during code reviews
+to continuously improve our coding practices.
 
 \newpage{}
 
@@ -342,7 +363,7 @@ The team plans to use the following technologies for the development of \prognam
 
 \wss{Not required for CAS 741}
 
-\input{../Reflection.tex}
+\input{../Reflection.tex} 
 
 \begin{enumerate}
     \item Why is it important to create a development plan prior to starting the
@@ -352,8 +373,15 @@ The team plans to use the following technologies for the development of \prognam
     \item What disagreements did your group have in this deliverable, if any,
     and how did you resolve them?
 \end{enumerate}
+Zongcheng's answer: \\
+\begin{enumerate}
+  \item It is important to create a development plan prior to starting the project because it shows clear direction of development, 
+helps identify potential risks and challenges early on and avoid potential conflicts. \\
+We had a discussion on the development plan and 
+get some important consensus, including how the tasks will be assigned, how the communication will be, and how the workflow will be.
+So that everyone is on the same page and work towards the same goal.
 
-\newpage{}
+\end{enumerate}
 
 \section*{Appendix --- Team Charter}
 
