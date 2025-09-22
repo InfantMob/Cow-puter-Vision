@@ -27,11 +27,14 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-2025-09-18 & Zongcheng Li & Initial draft of Development Plan \\
-2025-09-18 & All Members& Check-in with TA and updates based on feedback \\
-2025-09-20 & Zongcheng Li & Finish remaining sections of the Development Plan \\
-2025-09-21 & Ji Zhang & Updated Appendix, adjusted formatting, and added a reference.\\
+2025-09-18 & Zongcheng Li   & Initial draft of Development Plan \\
+2025-09-18 & All Members    & Check-in with TA and updates based on feedback \\
+2025-09-20 & Zongcheng Li   & Finish remaining sections of the Development Plan \\
+2025-09-21 & Ji Zhang       & Updated Appendix, adjusted formatting, and added a reference.\\
+2025-09-21 & Changhao Wu    & Revised Team Meeting Plan section and Team Member Roles section \\
+2025-09-22 & Changhao Wu    & Revised Main Risks and Mitigation Strategies section with clearer risks and more detailed mitigation steps \\
 ... & ... & ...\\
+
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -289,6 +292,92 @@ This will include:
 \end{itemize}
 If the proof of concept is successful, it will provide confidence that the project can be completed within the given constraints.
 
+
+
+\section{Proof-of-Concept Demonstration Plan}
+
+The proof-of-concept (POC) is designed to directly address the key risks to project success by demonstrating that the core functionality can be achieved under realistic constraints.
+
+\subsection*{Main Risks and Mitigation Strategies}
+\begin{enumerate}
+  \item \textbf{Feasibility of the computer vision pipeline}:
+      The pipeline for this task consists of multiple components (e.g., detection, tracking, and individual identification). 
+      If all components were to be implemented from scratch, the project would likely exceed the available time 
+      and result in significantly lower accuracy compared to state-of-the-art methods. Since the overall pipeline accuracy 
+      is bounded by the weakest component, unreliable submodules would drag down the entire system’s performance.  
+      \begin{itemize}
+        \item \emph{Mitigation}: 
+            \item[]Use established models as the foundation for certain components, such as YOLO for cow detection 
+              and a tracking library (e.g., ByteTrack or DeepSORT) for maintaining identities across frames. 
+              This allows the team to focus its efforts on the novel and most critical task---\emph{individual cow identification}. 
+              This division of effort makes the project feasible while ensuring the final pipeline maintains competitive accuracy.
+      \end{itemize}
+
+  \item \textbf{Pipeline integration complexity}:
+      Even if individual components (detection, tracking, and identification) work well independently, integrating them into a seamless 
+      pipeline may introduce unexpected errors, latency, or data mismatches between modules.  
+      \begin{itemize}
+        \item \emph{Mitigation}: 
+          \item[] Use standardized data formats (e.g., consistent bounding box representations, unified frame rates) to minimize compatibility issues between modules.  
+          \item[] Employ logging and modular testing to monitor intermediate outputs at each stage, so problems can be traced without debugging the entire pipeline.  
+      \end{itemize}
+
+  \item \textbf{Availability and quality of training data}:
+        Datasets may be insufficient in size or diversity, leading to poor generalization.  
+        \begin{itemize}
+          \item \emph{Mitigation}: 
+          \item[] Combine multiple public datasets (e.g., OpenCows2020, MultiCamCows2024). Perform data augmentation and, if necessary, collect a small supplemental dataset.
+        \end{itemize}
+
+  \item \textbf{Data domain mismatch (training vs. real-world deployment)}:
+      Public datasets may differ significantly from real farm environments in terms of lighting, camera angles, and resolution. 
+      As a result, a model trained only on public datasets may underperform when deployed in the field.  
+      \begin{itemize}
+        \item \emph{Mitigation}: 
+        \item[] Incorporate “non-ideal” data samples in the POC, such as videos captured under different lighting 
+        or viewing angles, to test robustness. 
+      \end{itemize}
+
+  \item \textbf{Tracking robustness in crowded or occluded scenes}:
+      When multiple cows overlap or partially occlude each other in the video feed, off-the-shelf tracking components may lose track 
+      of identities.  
+      \begin{itemize}
+        \item \emph{Mitigation}: 
+        \item[] Evaluate multiple tracking libraries (e.g., ByteTrack, DeepSORT) during the POC to identify which 
+        performs best in crowded scenarios. 
+      \end{itemize}
+
+\end{enumerate}
+
+\subsection*{Demonstration Plan}
+The POC will demonstrate a minimal but complete pipeline that directly addresses the identified risks:  
+\begin{enumerate}
+  \item \textbf{Cow detection and tracking}: Run YOLO for cow detection and integrate a tracking library 
+        (e.g., ByteTrack or DeepSORT) to maintain identities across frames.  
+        This step verifies that off-the-shelf components can provide a reliable foundation 
+        (\emph{addresses pipeline feasibility and tracking robustness}).  
+
+  \item \textbf{Individual identification prototype}: Apply the team’s custom model to assign stable IDs 
+        to detected cows.  
+        This tests whether individual recognition can function reliably given outputs from detection and tracking 
+        (\emph{addresses feasibility and data quality}).  
+
+  \item \textbf{Domain robustness check}: Use a small set of “non-ideal” video samples with varied lighting 
+        and camera angles to observe performance differences.  
+        (\emph{addresses domain mismatch}).  
+
+  \item \textbf{Integration validation}: Combine detection, tracking, and identification into a single pipeline, 
+        while logging intermediate results at each stage.  
+        This confirms that the modules can be integrated without major latency or data mismatch 
+        (\emph{addresses integration complexity}).  
+
+  \item \textbf{User-facing output}: Display results in a simple UI showing bounding boxes and correct labels 
+        across frames stably. This demonstrates the pipeline’s functionality and makes evaluation of performance straightforward.  
+\end{enumerate}
+
+If successful, the POC will provide evidence that each major risk can be managed and that the overall project is feasible within the available timeframe.
+
+
 \section{Expected Technology}
 
 
@@ -389,7 +478,7 @@ to continuously improve our coding practices.
 
 \end{enumerate}
 
-Zongcheng's answer: \\
+Zongcheng's answer:
 \begin{enumerate}
   \item It is important to create a development plan prior to starting the project because it shows clear direction of development, 
 helps identify potential risks and challenges early on and avoid potential conflicts. \\
@@ -414,7 +503,7 @@ miss any deliverables.
   \end{itemize}
 \end{enumerate}
 
-Ji's answer: \\
+Ji's answer:
 \begin{enumerate}
   \item I think the development plan is like a "roadmap" for the team. Without a clear plan, the team is prone to 
 problems such as ambiguous goals and unclear responsibilities. By formulating a Development Plan, we can unify our 
@@ -567,7 +656,7 @@ each member gains experience in teamwork.
 
 When there is a disagreement, the team will first discuss each member's opinion, 
 and then vote if necessary. The majority opinion will be adopted.
-If we cannot reach a consensus, we will seek advice from our industry advisor or TA.
+If we cannot reach a consensus, we will seek advice from our supervisor or TA.
 
 
 \newpage{}
