@@ -5,6 +5,9 @@
 \usepackage{hyperref} % For hyperlinks in the PDF
 \usepackage{longtable}
 
+\usepackage[margin=1in]{geometry}
+
+
 \title{Development Plan\\\progname}
 
 \author{\authname}
@@ -24,11 +27,14 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-2025-09-18 & Zongcheng Li & Initial draft of Development Plan \\
-2025-09-18 & All Members& Check-in with TA and updates based on feedback \\
-2025-09-20 & Zongcheng Li & Finish remaining sections of the Development Plan \\
-2025-09-21 & Ji Zhang & Updated Appendix, adjusted formatting, and added a reference.\\
+2025-09-18 & Zongcheng Li   & Initial draft of Development Plan \\
+2025-09-18 & All Members    & Check-in with TA and updates based on feedback \\
+2025-09-20 & Zongcheng Li   & Finish remaining sections of the Development Plan \\
+2025-09-21 & Ji Zhang       & Updated Appendix, adjusted formatting, and added a reference.\\
+2025-09-21 & Changhao Wu    & Revised Team Meeting Plan section and Team Member Roles section \\
+2025-09-22 & Changhao Wu    & Revised Main Risks and Mitigation Strategies section with clearer risks and more detailed mitigation steps \\
 ... & ... & ...\\
+
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -38,7 +44,7 @@
 %\wss{Put your introductory blurb here.  Often the blurb is a brief roadmap of
 %what is contained in the report.}
 
-\section{Development Plan Overview}
+\section*{Development Plan Overview}
 The development plan for \progname{} outlines how our team will organize, develop, 
 and deliver an AI-based system to identify cows by their black-white patterns on their back 
 and detect potential health issues. This document includes our Confidential information, 
@@ -97,14 +103,30 @@ and distribute the project with proper attribution.
 %in-person.}
 
 %\wss{How will the meetings be structured?  There should be a chair for all meetings.  There should be an agenda for all meetings.}
+
+The team will meet every Tuesday and Sunday between 6:00--10:00 PM, with each meeting lasting approximately 30 minutes. 
+Meetings will be held online using Microsoft Teams or Discord. If an in-person session is required for testing, integration, or major 
+decision-making, a separate time and location will be arranged in advance. These twice-weekly meetings do not include 
+the mandatory weekly meeting with the TA during the Thursday tutorial time, nor the separate weekly meeting with the supervisor.
+
+Each meeting will be structured as follows:
+
+\begin{enumerate}
+    \item The agenda for each meeting will be posted as a GitHub issue ahead of time.
+    \item Each team member will provide updates on their assigned tasks (progress, challenges).
+    \item The team will discuss ongoing issues, distribute new tasks, and set short-term goals.
+    \item Each meeting will have a designated chair and a note-taker. All meeting outcomes will be recorded and shared with the team.
+\end{enumerate}
+
+In addition:
 \begin{itemize}
-  \item Frequency: Team check-in meetings will be held twice weekly via Microsoft Teams or Zoom, all team members are expected to attend
-  and share their progress.
-  \item In-Person: An in-person meeting will be scheduled at least once per month on campus.
-  \item The industry advisor will meet with the team weekly, virtually. Including check-in and Q\&A.
-  \item All members must attend the weekly meeting with TA, usually on Thursday tutorial time.
-  \item Each meeting will have a designated chair and note-taker, with an agenda shared in advance.
+    \item All members must attend the weekly TA meeting during the Thursday tutorial time.
+    \item The supervisor will hold a weekly virtual meeting with the team for progress updates, feedback, and Q\&A.
 \end{itemize}
+
+
+
+
 
 \section{Team Communication Plan}
 
@@ -124,35 +146,21 @@ and distribute the project with proper attribution.
 % not necessary at this stage.  In a student team the role of the individuals will
 % likely change throughout the year.}
 
-Every team member are responsible for attending meetings, replying to messages, creating issues, coding, testing,
-reviewing code, and documentation.  In addition, team members will take on
-the following rotating roles:
+Every team member is responsible for attending meetings, responding to messages, creating issues, coding, testing, 
+reviewing, and documentation. In addition, members will take on the following roles:
 
-\subsection*{Meeting Chair}
-Leads meetings and ensures meetings stay on track. \\
-Every team member will take turns being the chair.
+\begin{itemize}
+  \item \textbf{Project Manager}: Organizes the workflow, monitors progress toward deadlines, balances workload among members, and communicates project status to the supervisor.
+  
+  \item \textbf{Meeting Chair}: Prepares agendas, leads meetings, facilitates discussions, ensures decisions are made efficiently, and keeps meetings on track.
+  
+  \item \textbf{Notetaker}: Team members will take turns serving as notetaker, responsible for recording meeting minutes, capturing action items, and summarizing key discussions to be shared with the group.
+  
+  \item \textbf{Quality Assurance}: All team members will participate in reviewing deliverables to ensure completeness, accuracy, and adherence to project requirements. The review process will be shared collectively rather than assigned to a single individual.
+\end{itemize}
 
-\subsection*{Note-Taker}
-Records meeting minutes, captures action items, and distributes notes to the team. \\
-Every team member will take turns being the note-taker.
-
-\subsection*{Reviewer}
-Reviews code contributions, provides feedback, and ensures coding standards are met. \\
-Zongcheng Li, Ji Zhang and Baoning Zhang will primarily take on this role, but all team members are encouraged to participate in code reviews.
-
-\subsection*{Integrator}
-Merges code contributions, resolves conflicts, and ensures the codebase remains stable. \\
-Changhao Wu and Zongcheng Li will primarily take on this role, but all team members are encouraged to participate in integration tasks.
-
-\subsection*{Lead Developer}
-Oversees the technical direction of the AI/ML pipeline, coordinates integration 
-between modules, and supports other members in debugging and implementation. \\
-Changhao Wu and Zongcheng Li will primarily take on this role, but all team members are encouraged to contribute to technical decisions. \\
-All team members will contribute to development tasks.
-
-\subsection*{Communication Lead}
-Prepare agendas, manages communication with the industry advisor, schedules meetings, and ensures follow-up on action items. \\
-Zongcheng Li and Changhao Wu will primarily take on this role, but all team members are encouraged to participate in communication tasks.
+\noindent
+Roles are expected to be flexible, and members may rotate or assume different responsibilities as project needs evolve, ensuring both accountability and adaptability.
 
 \section{Workflow Plan}
 
@@ -256,33 +264,93 @@ The following workflow will be adopted for the project:
 % details. You will need to reproduce information that is in the course outline
 % for deadlines.}
 
-\section{Proof of Concept Demonstration Plan}
 
 % What is the main risk, or risks, for the success of your project?  What will you
 % demonstrate during your proof of concept demonstration to convince yourself that
 % you will be able to overcome this risk?
-\subsection*{Main Risks}
-The main risks identified for the success of the project include:
-\begin{itemize}
-  \item Technical feasibility of the AI algorithms
-  \item Availability and quality of training data
-  \item Integration with end users' computing environments
-  \item Time constraints and resource limitations
-  \item User acceptance and feedback
-\end{itemize}
+\section{Proof-of-Concept Demonstration Plan}
+
+The proof-of-concept (POC) is designed to directly address the key risks to project success by demonstrating that the core functionality can be achieved under realistic constraints.
+
+\subsection*{Main Risks and Mitigation Strategies}
+\begin{enumerate}
+  \item \textbf{Feasibility of the computer vision pipeline}:
+      The pipeline for this task consists of multiple components (e.g., detection, tracking, and individual identification). 
+      If all components were to be implemented from scratch, the project would likely exceed the available time 
+      and result in significantly lower accuracy compared to state-of-the-art methods. Since the overall pipeline accuracy 
+      is bounded by the weakest component, unreliable submodules would drag down the entire system’s performance.  
+      \begin{itemize}
+        \item \emph{Mitigation}: 
+            \item[]Use established models as the foundation for certain components, such as YOLO for cow detection 
+              and a tracking library (e.g., ByteTrack or DeepSORT) for maintaining identities across frames. 
+              This allows the team to focus its efforts on the novel and most critical task---\emph{individual cow identification}. 
+              This division of effort makes the project feasible while ensuring the final pipeline maintains competitive accuracy.
+      \end{itemize}
+
+  \item \textbf{Pipeline integration complexity}:
+      Even if individual components (detection, tracking, and identification) work well independently, integrating them into a seamless 
+      pipeline may introduce unexpected errors, latency, or data mismatches between modules.  
+      \begin{itemize}
+        \item \emph{Mitigation}: 
+          \item[] Use standardized data formats (e.g., consistent bounding box representations, unified frame rates) to minimize compatibility issues between modules.  
+          \item[] Employ logging and modular testing to monitor intermediate outputs at each stage, so problems can be traced without debugging the entire pipeline.  
+      \end{itemize}
+
+  \item \textbf{Availability and quality of training data}:
+        Datasets may be insufficient in size or diversity, leading to poor generalization.  
+        \begin{itemize}
+          \item \emph{Mitigation}: 
+          \item[] Combine multiple public datasets (e.g., OpenCows2020, MultiCamCows2024). Perform data augmentation and, if necessary, collect a small supplemental dataset.
+        \end{itemize}
+
+  \item \textbf{Data domain mismatch (training vs. real-world deployment)}:
+      Public datasets may differ significantly from real farm environments in terms of lighting, camera angles, and resolution. 
+      As a result, a model trained only on public datasets may underperform when deployed in the field.  
+      \begin{itemize}
+        \item \emph{Mitigation}: 
+        \item[] Incorporate “non-ideal” data samples in the POC, such as videos captured under different lighting 
+        or viewing angles, to test robustness. 
+      \end{itemize}
+
+  \item \textbf{Tracking robustness in crowded or occluded scenes}:
+      When multiple cows overlap or partially occlude each other in the video feed, off-the-shelf tracking components may lose track 
+      of identities.  
+      \begin{itemize}
+        \item \emph{Mitigation}: 
+        \item[] Evaluate multiple tracking libraries (e.g., ByteTrack, DeepSORT) during the POC to identify which 
+        performs best in crowded scenarios. 
+      \end{itemize}
+
+\end{enumerate}
 
 \subsection*{Demonstration Plan}
-The proof of concept demonstration will focus on showcasing the core 
-functionality of the AI-based cow identification. \\
-This will include:
-\begin{itemize}
-  \item A working prototype that can identify cows from images or video feeds.
-  \item A basic user interface for interacting with the system.
-  \item Initial results from model training and evaluation.
-  \item A plan for addressing the identified risks, including data collection strategies, 
-  algorithm selection, and integration approaches.
-\end{itemize}
-If the proof of concept is successful, it will provide confidence that the project can be completed within the given constraints.
+The POC will demonstrate a minimal but complete pipeline that directly addresses the identified risks:  
+\begin{enumerate}
+  \item \textbf{Cow detection and tracking}: Run YOLO for cow detection and integrate a tracking library 
+        (e.g., ByteTrack or DeepSORT) to maintain identities across frames.  
+        This step verifies that off-the-shelf components can provide a reliable foundation 
+        (\emph{addresses pipeline feasibility and tracking robustness}).  
+
+  \item \textbf{Individual identification prototype}: Apply the team’s custom model to assign stable IDs 
+        to detected cows.  
+        This tests whether individual recognition can function reliably given outputs from detection and tracking 
+        (\emph{addresses feasibility and data quality}).  
+
+  \item \textbf{Domain robustness check}: Use a small set of “non-ideal” video samples with varied lighting 
+        and camera angles to observe performance differences.  
+        (\emph{addresses domain mismatch}).  
+
+  \item \textbf{Integration validation}: Combine detection, tracking, and identification into a single pipeline, 
+        while logging intermediate results at each stage.  
+        This confirms that the modules can be integrated without major latency or data mismatch 
+        (\emph{addresses integration complexity}).  
+
+  \item \textbf{User-facing output}: Display results in a simple UI showing bounding boxes and correct labels 
+        across frames stably. This demonstrates the pipeline’s functionality and makes evaluation of performance straightforward.  
+\end{enumerate}
+
+If successful, the POC will provide evidence that each major risk can be managed and that the overall project is feasible within the available timeframe.
+
 
 \section{Expected Technology}
 
@@ -384,7 +452,7 @@ to continuously improve our coding practices.
 
 \end{enumerate}
 
-Zongcheng's answer: \\
+Zongcheng's answer:
 \begin{enumerate}
   \item It is important to create a development plan prior to starting the project because it shows clear direction of development, 
 helps identify potential risks and challenges early on and avoid potential conflicts. \\
@@ -409,7 +477,7 @@ miss any deliverables.
   \end{itemize}
 \end{enumerate}
 
-Ji's answer: \\
+Ji's answer:
 \begin{enumerate}
   \item I think the development plan is like a "roadmap" for the team. Without a clear plan, the team is prone to 
 problems such as ambiguous goals and unclear responsibilities. By formulating a Development Plan, we can unify our 
@@ -562,7 +630,7 @@ each member gains experience in teamwork.
 
 When there is a disagreement, the team will first discuss each member's opinion, 
 and then vote if necessary. The majority opinion will be adopted.
-If we cannot reach a consensus, we will seek advice from our industry advisor or TA.
+If we cannot reach a consensus, we will seek advice from our supervisor or TA.
 
 
 \newpage{}
