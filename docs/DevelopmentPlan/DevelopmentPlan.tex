@@ -173,23 +173,76 @@ Roles are expected to be flexible, and members may rotate or assume different re
 % 	classification, etc.?
 %   \item Use of CI/CD
 % \end{itemize}
-The following workflow will be adopted for the project:
-\begin{enumerate}
-  \item Pull any changes from the main branch before starting new work.
-	\item Create a new branch for each feature or bug fix, following the naming convention `feature/feature-name` or `bugfix/bug-name`.
-	\item Create a draft of the structure of the code/documentation.
-	\item Implement the functions without dependencies first, then the functions with dependencies.
-	\item Commit changes frequently with clear, descriptive messages.
-	\item Push the branch to the remote repository on GitHub.
-	\item Open a pull request (PR) to merge the feature/bugfix branch into the main branch.
-	\item Assign at least one team member as a reviewer for the PR.
-	\item Address any feedback from the reviewer(s) and make necessary changes.
-	\item Once approved, the PR will be merged into the main branch.
-	\item Delete the feature/bugfix branch after merging to keep the repository clean.
-	\item Use GitHub Issues to track tasks, bugs, and feature requests, with appropriate labels for classification.
-	\item Update any changes in the weekly check-in meetings.
-\end{enumerate}
 
+\subsection{Normal Workflow}
+If a team member is working on a new feature, bug fix, testing, or documentation,
+the following workflow will be adopted:
+% \begin{enumerate}
+%   \item Find the related issue or create a new issue on GitHub to track the task, with appropriate labels (e.g., `feature`, `bug`, `documentation`).
+%   \item Pull any changes from the main branch before starting new work.
+% 	\item Create a new branch for each feature or bug fix, following the naming convention `feature/feature-name` or `bugfix/bug-name`.
+% 	\item Create a draft of the structure of the code/documentation.
+% 	\item Implement the functions without dependencies first, then the functions with dependencies.
+% 	\item Commit changes frequently with clear, descriptive messages.
+% 	\item Push the branch to the remote repository on GitHub.
+% 	\item Open a pull request (PR) to merge the feature/bugfix branch into the main branch.
+% 	\item Assign at least one team member as a reviewer for the PR.
+% 	\item Address any feedback from the reviewer(s) and make necessary changes.
+% 	\item Once approved, the PR will be merged into the main branch.
+% 	\item Delete the feature/bugfix branch after merging to keep the repository clean.
+% 	\item Use GitHub Issues to track tasks, bugs, and feature requests, with appropriate labels for classification.
+% 	\item Update any changes in the weekly check-in meetings.
+% \end{enumerate}
+
+\begin{itemize}
+  \item Planning and Task Assignment
+    \begin{enumerate}
+      \item Discuss any issues or tasks in team meetings or in messages.
+      \item Create or update GitHub issues to track tasks, bugs, and feature requests. Move the issue to "Backlog".
+      \item Use appropriate labels for classification (e.g., `feature`, `bug`, `documentation`).
+      \item Prioritize tasks based on project milestones and deadlines.
+      \item Assign tasks to team members based on their expertise and workload and then move the issue to "Ready".
+      \item Set in-group deadlines for tasks to ensure timely completion.
+    \end{enumerate}
+  \item Development
+    \begin{enumerate}
+      \item Create a new branch for each feature or bug fix, following the naming convention `feature/feature-name`, `test/test-name`, or `bugfix/bug-name`.
+      \item Pull any changes from the main branch before starting new work.
+      \item Move the related issues to "In Progress".
+      \item Create a draft of the structure of the code/documentation.
+      \item Implement the functions without dependencies first, then the functions with dependencies. 
+      \item Commit changes frequently with clear, descriptive messages.
+      \item Push the branch to the remote repository on GitHub.
+      \item Open a pull request (PR) to merge the feature/bugfix branch into the main branch, with appropriate link to the related issue and labels.
+      \item Assign at least one team member as a reviewer for the PR.
+      \item Address any feedback from the reviewer(s) and make necessary changes.
+      \item Once approved, the PR will be merged into the main branch.
+      \item Delete the feature/bugfix branch after merging to keep the repository clean.
+      \item Move the issue to "Done" once the task is completed and merged.
+    \end{enumerate}
+  \item Review
+    \begin{enumerate}
+      \item Check changes of the PR to ensure completeness, accuracy, and adherence to project requirements.
+      \item If applicable, provide constructive feedback and suggestions for improvement.
+      \item Approve the PR if it meets the quality standards.
+      \item Request changes if the PR does not meet the quality standards.
+      \item Merge the PR into the main branch once approved.
+      \item Delete the feature/bugfix branch after merging to keep the repository clean.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Small Fixes}
+For small fixes (e.g., typos, minor formatting changes), 
+team members can commit directly to the main branch after 
+pulling the latest changes and ensuring no conflicts 
+exist. However, if the fix is part of a larger feature 
+or bug fix, it should follow the normal workflow.
+\begin{enumerate}
+  \item Pull the latest changes from the main branch.
+  \item Make the small fix directly in the main branch.
+  \item Commit the change with a clear message.
+  \item Push the changes to the remote repository on GitHub.
+\end{enumerate}
 
 \section{Project Decomposition and Scheduling}
 
