@@ -39,6 +39,7 @@
 2025-09-22 & Ji Zhang       & Update Coding Standards section \\
 2025-09-22 & Zongcheng Li    & Revised Workflow Plan section \\
 2025-09-22 & Baoning Zhang   & Revised appendix and combine them together \\
+2025-09-22 & Zongcheng Li    & Revised Coding Standards section \\
 ... & ... & ...\\
 
 \bottomrule
@@ -446,10 +447,35 @@ The team plans to use the following technologies for the development of \prognam
 \section{Coding Standard}
 
 % \wss{What coding standard will you adopt?}
-Because we want to ensure code readability and maintainability,
-we will adopt the \href{https://peps.python.org/pep-0008/}{PEP~8} coding standard for Python, which emphasizes readability and consistency.
-Additionally, we encourage team members to write comments and provide constructive feedback during code reviews
-to continuously improve our coding practices.
+To ensure code quality, readability, and consistency across the project, 
+the following coding standards will be adopted:
+\begin{itemize}
+  \item \textbf{Python}: \href{https://peps.python.org/pep-0008/}{PEP~8} 
+    \begin{enumerate}
+      \item We choose it because it is the most widely accepted coding standard for Python, promoting readability and maintainability.
+      \item It is helpful for collaborative projects, ensuring that all team members follow the same conventions.
+    \end{enumerate}
+  \item \textbf{Markdown}: \href{https://commonmark.org/}{CommonMark}
+    \begin{enumerate}
+      \item It provides a consistent and unambiguous specification for Markdown, ensuring that documents render correctly across different platforms.
+    \end{enumerate}
+  \item \textbf{LaTeX}: \href{https://github.com/smiths/capTemplate}{Dr. Smith's Capstone Templates}
+    \begin{enumerate}
+      \item It provides a well-structured and professional format for academic documents, ensuring consistency in formatting and style.
+      \item It is easy for our TA and instructor to read and grade.
+    \end{enumerate}
+  \item \textbf{Git commit messages}: \href{https://www.conventionalcommits.org/}{Conventional Commits}
+    \begin{enumerate}
+      \item It provides a clear and structured format for commit messages, making it easier to understand the history of changes.
+      \item It facilitates automated versioning and changelog generation.
+    \end{enumerate}
+\end{itemize}
+
+
+% Because we want to ensure code readability and maintainability,
+% we will adopt the \href{https://peps.python.org/pep-0008/}{PEP~8} coding standard for Python, which emphasizes readability and consistency.
+% Additionally, we encourage team members to write comments and provide constructive feedback during code reviews
+% to continuously improve our coding practices.
 % To be specific, we will follow these key guidelines:
 % \begin{itemize}
 %   \item Use 4 spaces per indentation level.
