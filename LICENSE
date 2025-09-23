@@ -1,23 +1,19 @@
-<This is where you put your License.  A sample license is shown below.>
+In terms of Copyright License, CATTLEytics software is not open-source, so general licenses like that do not apply.
+Our platforms are also cloud-based (SaaS), so they're not usually "licensed" because the code is not downloaded or installed by the user.
+This is where you have "Terms of Service" rather than a copyright license.
 
-MIT License
 
-Copyright (c) 2022 Spencer Smith
+Copyright © 2025 CATTLEytics Inc. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+By creating an account or accessing any services of CATTLEytics Inc.,
+you are granted a limited, non-exclusive, non-transferable,
+revocable license to access and use the platform solely for your
+internal business purposes, subject to these Terms of Service.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You may not:
+- Copy, modify, or create derivative works of the platform;
+- Attempt to reverse engineer or gain unauthorized access;
+- Use the platform to provide competing services;
+- Redistribute or resell access without permission.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+All rights not expressly granted are reserved by CATTLEytics Inc.
