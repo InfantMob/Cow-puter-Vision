@@ -27,20 +27,21 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-2025-09-18 & Zongcheng Li   & Initial draft of Development Plan \\
-2025-09-18 & All Members    & Check-in with TA and updates based on feedback \\
-2025-09-20 & Zongcheng Li   & Finish remaining sections of the Development Plan \\
-2025-09-21 & Ji Zhang       & Updated Appendix, adjusted formatting, and added a reference.\\
-2025-09-21 & Changhao Wu    & Revised Team Meeting Plan section and Team Member Roles section \\
-2025-09-22 & Baoning Zhang    & Update reflection section \\
-2025-09-22 & Changhao Wu    & Revised Main Risks and Mitigation Strategies section with clearer risks and more detailed mitigation steps \\
-2025-09-22 & Changhao Wu    & Revised Project Decomposition and Scheduling section \\
-2025-09-22 & Changhao Wu    & Revised Team Communication Plan section and Project Decomposition and Scheduling\\
-2025-09-22 & Ji Zhang       & Update Coding Standards section \\
-2025-09-22 & Zongcheng Li    & Revised Workflow Plan section \\
-2025-09-22 & Baoning Zhang   & Revised appendix and combine them together \\
-2025-09-22 & Zongcheng Li    & Revised Coding Standards section \\
-... & ... & ...\\
+2025-09-18  & Zongcheng Li     & Initial draft of Development Plan \\
+2025-09-18  & All Members      & Check-in with TA and updates based on feedback \\
+2025-09-20  & Zongcheng Li     & Finish remaining sections of the Development Plan \\
+2025-09-21  & Ji Zhang         & Updated Appendix, adjusted formatting, and added a reference.\\
+2025-09-21  & Changhao Wu      & Revised Team Meeting Plan section and Team Member Roles section \\
+2025-09-22  & Baoning Zhang    & Update reflection section \\
+2025-09-22  & Changhao Wu      & Revised Main Risks and Mitigation Strategies section with clearer risks and more detailed mitigation steps \\
+2025-09-22  & Changhao Wu      & Revised Project Decomposition and Scheduling section \\
+2025-09-22  & Changhao Wu      & Revised Team Communication Plan section and Project Decomposition and Scheduling\\
+2025-09-22  & Ji Zhang         & Update Coding Standards section \\
+2025-09-22  & Zongcheng Li     & Revised Workflow Plan section \\
+2025-09-22  & Baoning Zhang    & Revised appendix and combine them together \\
+2025-09-22  & Ji Zhang         & update Accountability and Teamwork part \\
+2025-09-22  & Changhao Wu      & Completed Confidential Information, IP to Protect and Copyright License\\
+...         & ... & ...\\
 
 \bottomrule
 \end{tabularx}
@@ -63,38 +64,41 @@ plan, Expected technology, and Coding standard.
 % \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
 % {lecture slides}.}
 
-\section{Confidential Information?}
+\section{Confidential Information}
 
 %\wss{State whether your project has confidential information from industry, or
 %not.  If there is confidential information, point to the agreement you have in
 %place.}
 %\wss{For most teams this section will just state that there is no confidential
-%information to protect.}
+%informatiThe project is conducted primarily with publicly available datasets, academic methods, and student-developed code. 
 
-Our project does not involve confidential information from industry. 
-All data and models will be based on publicly available datasets or 
-collected in compliance with open-source or academic research guidelines.
+The project is conducted primarily with publicly available datasets, academic methods, and student-developed code. 
+Under the Agreement with CATTLEytics Inc., such materials are not considered Confidential Information. 
+Confidential Information refers only to proprietary technical or business information explicitly designated as confidential by the Partner. 
+Any such Partner-provided Confidential Information will be protected in accordance with the Agreement, will not be disclosed in reports or 
+public repositories, and will remain subject to confidentiality obligations for three years following the completion of the project.
 
 \section{IP to Protect}
-
+In accordance with the Student Academic Project Agreement with CATTLEytics Inc., all Intellectual Property (IP) created 
+in the scope of this project, including software code and related technical outputs, is owned by the Partner. 
+This IP is distinct from Confidential Information: while the code developed by the team is not considered confidential 
+by default, ownership resides with CATTLEytics Inc. under the terms of the Agreement. 
+The copyright for student-authored academic deliverables, such as reports and presentations, remains with the students, 
+provided they do not disclose any Partner Confidential Information.
 %\wss{State whether there is IP to protect.  If there is, point to the agreement.
 %All students who are working on a project that requires an IP agreement are also
 %required to sign the ``Intellectual Property Guide Acknowledgement.''}
 
-There is no proprietary intellectual property (IP) to protect for this project. 
-The outputs will be published under an open-source license to encourage 
-collaboration and reproducibility.
-
-NEED UPDATE LATER, since we haven't discuss the details with the industry partner yet.
 
 \section{Copyright License}
+In accordance with the Student Academic Project Agreement with CATTLEytics Inc., 
+all software code and technical outputs developed in the scope of the project are considered 
+Intellectual Property of the Partner and will not be released under an open-source license. 
+As such, the project repository will remain private and is accessible only for course evaluation purposes. 
+The copyright for student-authored academic materials, such as reports and presentations, remains with the students, 
+provided that no Partner Confidential Information is disclosed. 
+These materials may be submitted to fulfill academic requirements but are not licensed for open distribution.
 
-%\wss{What copyright license is your team adopting.  Point to the license in your
-%repo.}
-
-The team has chosen the MIT License, which will be included in the GitHub 
-repository. This license provides flexibility for others to use, modify, 
-and distribute the project with proper attribution.
 
 
 \section{Team Meeting Plan}
@@ -601,28 +605,61 @@ Actions to take in case of an emergency:
 % \wss{What are your team's expectations regarding the quality
 % of team members' preparation for team meetings and the quality of the
 % deliverables that members bring to the team?}
-Expectations regarding quality:
+Our team sets explicit expectations for both meeting preparation and deliverable quality:
 \begin{itemize}
-  \item Prepare questions, updates, and relevant materials before each meeting.
-  \item Deliverables should be completed on time, and be able to run.
-  \item Team members should actively participate in discussions, and replyig to messages in a timely manner.
+  \item \textbf{Meeting Preparation:}
+    \begin{itemize}
+      \item Review assigned work and materials before meetings.
+      \item Bring clear updates including progress, blockers, and possible solutions.
+      \item Keep discussions decision-oriented; capture risks, assumptions, and next steps.
+    \end{itemize}
+
+  \item \textbf{Deliverables Quality:}
+    \begin{itemize}
+      \item Deliverables must be correct, clear, complete, and reproducible.
+      \item Include handling of error and empty states when applicable.
+      \item Provide basic validation evidence such as runtime logs, performance snapshots, or stability checks.
+    \end{itemize}
+
+  \item \textbf{Verification and Feedback:}
+    \begin{itemize}
+      \item Validate outputs with staged tests.
+      \item Address code review feedback within one week unless otherwise agreed.
+      \item Keep documentation current and provide timely handoffs to teammates.
+    \end{itemize}
 \end{itemize}
 
-\subsubsection*{Attitude}
 
 % \wss{What are your team's expectations regarding team members' ideas,
 % interactions with the team, cooperation, attitudes, and anything else regarding
 % team member contributions?  Do you want to introduce a code of conduct?  Do you
 % want a conflict resolution plan?  Can adopt existing codes of conduct.}
 
-Our expectations regarding attitude:
+\subsubsection*{Attitude}
+
+Our team has the following expectations for how members work together:
+
 \begin{itemize}
-  \item Be respectful of each other's ideas and opinions, even if they differ from our own.
-  \item Be open to constructive feedback and willing to provide the same to others.
-  \item Notify the team in advance (at least 24 hours) if unable to meet deadlines or attend meetings, this is important.
-  \item Keep up to date with project progress and contribute actively to discussions and tasks.
-  \item At least check the messages on MS Teams or Discord once a day.
+  \item \textbf{Respectful Communication:} Listen to others, do not interrupt, and answer clearly.
+  \item \textbf{Teamwork:} Share ideas and problems early, and be willing to help each other when needed.
+  \item \textbf{Responsibility:} Finish tasks on time, or let the team know early if you cannot meet a deadline.
+  \item \textbf{Quality Mindset:} Aim for simple and reliable solutions, and improve step by step instead of rushing big risky changes.
 \end{itemize}
+
+We also follow a short code of conduct:
+
+\begin{itemize}
+  \item \textbf{Inclusivity:} Everyone's opinion matters, and all members should get a chance to speak.
+  \item \textbf{Professionalism:} Be polite, avoid rude language, and act with honesty.
+  \item \textbf{Feedback:} Focus feedback on the work itself, not on the person, and give clear suggestions.
+\end{itemize}
+
+\textbf{Conflict Resolution Plan:}
+\begin{enumerate}
+  \item First, the members involved should talk directly and try to solve the problem.
+  \item If this does not work, another teammate can help mediate the discussion.
+  \item If the issue is still not solved, bring it to the TA or instructor.
+\end{enumerate}
 
 \subsubsection*{Stay on Track}
 
@@ -639,14 +676,38 @@ Our expectations regarding attitude:
 % consequences if someone doesn't hit their targets?  Do they need to bring the
 % coffee to the next team meeting?  Does the team need to make an appointment with
 % their TA, or the instructor?  Are there incentives for reaching targets early?}
-To keep the team on track, we will set clear milestones and deadlines for each phase of the project.
-Announcements and reminders will be sent on MS Teams and Discord channels
-to ensure everyone is aware of upcoming tasks and deadlines.
+To keep the team on track and maintain steady progress toward milestones, we adopt the following practices:
 
-Attendance, code commits, and task completion will be monitored. 
-If a team member consistently fails to meet expectations, the team will first discuss the issue privately 
-with the individual to understand any challenges they may be facing. If the issue persists, 
-the team may consider meeting with the TA or instructor to seek guidance on how to best support the individual.
+\begin{itemize}
+  \item \textbf{Clear Milestones and Deadlines:} Each phase of the project will have defined goals with deadlines announced in advance on MS Teams. Progress will be reviewed during weekly meetings.
+
+  \item \textbf{Tracking Attendance and Contributions:}
+    \begin{itemize}
+      \item Attendance is tracked at each scheduled meeting.
+      \item Contributions are measured through GitHub commits, pull requests, and issue updates.
+      \item Each member is expected to make steady, reviewable progress each week.
+    \end{itemize}
+  
+  \item \textbf{Performance and Reliability Metrics:}
+    \begin{itemize}
+      \item Monitor on-time task completion rate and responsiveness to assigned issues.
+      \item Track turnaround time for fixing bugs or addressing review comments.
+      \item For technical milestones, maintain basic performance metrics.
+    \end{itemize}
+
+  \item \textbf{Managing Underperformance:}
+    \begin{itemize}
+      \item First, hold a team conversation with the member to understand obstacles and set concrete checkpoints.
+      \item If issues persist, provide pairing or redistribute workload to protect the milestone.
+      \item For continued underperformance, escalate to the TA or instructor for support and resolution.
+    \end{itemize}
+
+  \item \textbf{Positive Reinforcement:}
+    \begin{itemize}
+      \item Recognize members who consistently meet or exceed expectations with public appreciation in meetings.
+      \item Provide opportunities for high-performing members to lead desired submodules or integrations.
+    \end{itemize}
+\end{itemize}
 
 \subsubsection*{Team Building}
 
@@ -663,9 +724,21 @@ each member gains experience in teamwork.
 % \wss{How will you make decisions in your group? Consensus?  Vote? How will you
 % handle disagreements? }
 
-When there is a disagreement, the team will first discuss each member's opinion, 
-and then vote if necessary. The majority opinion will be adopted.
-If we cannot reach a consensus, we will seek advice from our supervisor or TA.
+Our team will strive to make decisions through open discussion and consensus whenever possible:
+
+\begin{itemize}
+  \item \textbf{Consensus First:} Each member should express their own opinions before making a decision. We will reach a consensus through discussion.
+  \item \textbf{Voting When Needed:} If no consensus can be reached within the stipulated time of the meeting, a simple majority vote will be conducted by the team.
+  \item \textbf{Documentation:} All major decisions will be summarized on MS teams within 24 hours and linked to the GitHub issue records to ensure transparency and traceability.
+\end{itemize}
+
+\textbf{Conflict Resolution in Decision-Making:}
+\begin{enumerate}
+  \item Allow members to voice concerns without interruption and record key points neutrally.
+  \item Keep the discussion focused on the topic, not on personal attributions or intent.
+  \item If the differences still exist, a neutral team member will act as the mediator.
+  \item As a final step, unresolved disputes will be escalated to the TA or supervisor for input and decision.
+\end{enumerate}
 
 
 \newpage{}
